@@ -1,0 +1,39 @@
+app:
+    resource: @AppBundle/Controller
+    type:     annotation
+
+homepage:
+    path: /
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template:    'default/index.html.twig'
+package:
+    path:     /package
+    defaults: { _controller: "AppBundle:Package:index" }
+
+package_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:Package:show" }
+
+package_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:Package:new" }
+
+package_create:
+    path:     /create
+    defaults: { _controller: "AppBundle:Package:create" }
+    requirements: { _method: post }
+
+package_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:Package:edit" }
+
+package_update:
+    path:     /{id}/update
+    defaults: { _controller: "AppBundle:Package:update" }
+    requirements: { _method: post|put }
+
+package_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:Package:delete" }
+    requirements: { _method: post|delete }

@@ -1,0 +1,89 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+    <h1>My Cart</h1>
+
+	<form class="form-inline" style="float: left;">
+		<div class="form-group">
+		<label>Date: </label>
+			<select class="form-control">
+				<option>02-10-2015</option>
+				<option>03-10-2015</option>
+				<option>04-10-2015</option>
+				<option>05-10-2015</option>															
+			</select>
+		</div>&nbsp;&nbsp;
+
+		<div class="form-group">
+		<label>Package Type: </label>
+			<select class="form-control">
+				<option>Dining</option>
+				<option>Nightout Trackside</option>
+				<option>Hen and Stag</option>
+				<option>Private Parties</option>															
+			</select>
+		</div>
+	</form><br><br>
+	<br><br> 
+
+    <table class="table table-bordered">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <th width="50%">Package</th>
+                <th width="10%">Numbers</th>
+                <th width="10%">Cost</th>
+                <th>Quantity</th>      
+            </tr>
+            <tr>
+            	<td>{{ entity.id }}</td>
+            	<td>{{ entity.package }}</td>
+            	<td>{{ entity.numbers }}</td>
+            	<td>{{ entity.cost }}</td>
+            	<td align="center"><input type="number" min="0" max="999" size="2"></td>
+            </tr>
+            <tr>
+                <td>Test 1</td>
+                <td>Test 1</td>
+                <td>Test 1</td>
+                <td>Test 1</td>
+                <td align="center"><input type="number" min="0" max="999" size="2"></td>
+            </tr>
+            <tr>
+                <td>Test 1</td>
+                <td>Test 1</td>
+                <td>Test 1</td>
+                <td>Test 1</td>
+                <td align="center"><input type="number" min="0" max="999" size="2"></td>
+            </tr>
+            <tr>
+                <td>Test 1</td>
+                <td>Test 1</td>
+                <td>Test 1</td>
+                <td>Test 1</td>
+                <td align="center"><input type="number" min="0" max="999" size="2"></td>
+            </tr>
+            <tr>
+                <td>Test 1</td>
+                <td>Test 1</td>
+                <td>Test 1</td>
+                <td>Test 1</td>
+                <td align="center"><input type="number" min="0" max="999" size="2"></td>
+            </tr>            
+        </tbody>
+    </table>
+
+	<p style="float: right;"><button type="button" class="btn btn-primary btn-lg">Continue</button></p>
+
+	<form class="form-inline">
+		<div class="form-group">
+			<label for="inputCode">Promotional Code:</label>
+			<input type="text" class="form-control" id="inputCode" placeholder="GRA888">
+		</div>
+		<button type="submit" class="btn btn-default">Apply</button>
+	</form>
+
+</div>
+
+{% endblock %}

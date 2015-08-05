@@ -1,0 +1,32 @@
+html,
+body {
+	height: 100%;
+  	padding-top: 50px;
+}
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 75px;
+  background-color: #000000;
+}
+
+.footer-item {
+	color: #FFF;
+  	font-weight: bold;
+}
+
+
+.panel-footer2 {
+  padding: 10px 15px;
+  background-color: #000000;
+  border-top: 1px solid #ddd;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
