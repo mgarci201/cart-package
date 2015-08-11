@@ -2,7 +2,8 @@
 
 {% block body -%}
 <div class="container">
-    <h1>Cart Summary</h1>
+    <h1>Main Package(s)</h1>
+    <p></p>
 
     <table class="records_list table table-striped table-bordered">
         <thead>
@@ -11,6 +12,7 @@
                 <th>Package</th>
                 <th>Numbers</th>
                 <th>Cost</th>
+                <th>Quantity</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -21,15 +23,16 @@
                 <td>{{ entity.package }}</td>
                 <td>{{ entity.numbers }}</td>
                 <td>{{ entity.cost }}</td>
+                <td>Test</td>
                 <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('package_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('package_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
+                    <ul>
+                        <li>
+                            <a href="{{ path('package_show', { 'id': entity.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('package_edit', { 'id': entity.id }) }}">edit</a>
+                        </li>
+                    </ul>
                 </td>
             </tr>
         {% endfor %}
@@ -39,7 +42,7 @@
         <ul>
         <li>
             <a href="{{ path('package_new') }}">
-                Create a new entry
+                Add a new package
             </a>
         </li>
     </ul>
