@@ -8,7 +8,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use AppBundle\Entity\Package;
+use AppBundle\Entity\Package_Type;
 use AppBundle\Form\PackageType;
+use AppBundle\Form\DropdownPackageType;
 
 /**
  * Package controller.

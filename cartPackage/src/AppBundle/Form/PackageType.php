@@ -1,10 +1,11 @@
 <?php
 
-namespace AppBundle\Form\PackageType;
+namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use AppBundle\Entity\Package;
 
 class PackageType extends AbstractType
 {
@@ -17,8 +18,7 @@ class PackageType extends AbstractType
         $builder
             ->add('package')
             ->add('numbers')
-            ->add('cost')
-        ;
+            ->add('cost');
     }
     
     /**
@@ -27,7 +27,7 @@ class PackageType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Package'
+            'data_class' => 'AppBundle\Entity\Package',
         ));
     }
 
