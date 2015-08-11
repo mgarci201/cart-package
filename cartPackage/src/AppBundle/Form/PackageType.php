@@ -5,7 +5,6 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-use AppBundle\Entity\Package;
 
 class PackageType extends AbstractType
 {
@@ -19,6 +18,7 @@ class PackageType extends AbstractType
             ->add('package')
             ->add('numbers')
             ->add('cost');
+
     }
     
     /**

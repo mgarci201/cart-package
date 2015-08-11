@@ -8,6 +8,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use AppBundle\Entity\Package;
+use AppBundle\Form\DropdownPackageType;
+
 
 class DefaultController extends Controller
 {
@@ -46,5 +48,23 @@ class DefaultController extends Controller
 
         return array('entity' => $entity);
     }  
+
+    /**
+     * Finds and displays a dropdown entity from package type.
+     *
+     * @Route("/dropdown", name="dropdown")
+     * @Method("GET")
+     * @Template("default/index.html.twig")
+     */
+    public function dropdownAction(Request $request)
+    {
+        $entity = new package();
+        $form   = $this->createForm($entity);
+
+        return array(
+            'entity' => $entity,
+            'form'   => $form->createView(),
+        );        
+    }
 
 }
