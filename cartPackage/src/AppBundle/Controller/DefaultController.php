@@ -2,13 +2,18 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Task;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use AppBundle\Entity\Package;
+use AppBundle\Entity\Package_Type;
+use AppBundle\Form\PackageType;
 use AppBundle\Form\DropdownPackageType;
+use Symfony\Component\Form\Extension\Core\ChoiceList\ChoiceListInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 
 class DefaultController extends Controller
@@ -53,18 +58,22 @@ class DefaultController extends Controller
      * Finds and displays a dropdown entity from package type.
      *
      * @Route("/dropdown", name="dropdown")
-     * @Method("GET")
-     * @Template("default/index.html.twig")
      */
     public function dropdownAction(Request $request)
     {
-        $entity = new package();
-        $form   = $this->createForm($entity);
+        $task = new Task();
+        $task->setTask('Write a test');
+        $task->setDueDate(new \DateTime('tomorrow'));
 
-        return array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-        );        
+        $form = $this->createFormBuilder($task)
+            ->add('task', 'text')
+            ->add('dueDate', 'date')
+            ->add('save', 'submit', array('label' => 'Create Task'))
+            ->getForm();
+
+        return $this->render('base.html.twig', array(
+            'form' => $form->createView(),
+            ));
     }  
 
 }
