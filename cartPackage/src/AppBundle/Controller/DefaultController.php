@@ -65,6 +65,6 @@ class DefaultController extends Controller
             'entity' => $entity,
             'form'   => $form->createView(),
         );        
-    }
+    }  
 
 }
