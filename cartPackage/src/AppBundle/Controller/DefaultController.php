@@ -13,7 +13,6 @@ use AppBundle\Entity\Package_Type;
 use AppBundle\Form\PackageType;
 use AppBundle\Form\DropdownPackageType;
 use Symfony\Component\Form\Extension\Core\ChoiceList\ChoiceListInterface;
-use Symfony\Component\Validator\Constraints as Assert;
 
 
 class DefaultController extends Controller
