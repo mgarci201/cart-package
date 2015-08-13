@@ -13,6 +13,9 @@ use AppBundle\Entity\Package_Type;
 use AppBundle\Form\PackageType;
 use AppBundle\Form\DropdownPackageType;
 use Symfony\Component\Form\Extension\Core\ChoiceList\ChoiceListInterface;
+##use Symfony\Bridge\Doctrine\Form\ChoiceList\ArrayChoiceList;
+use Symfony\Component\Form\ChoiceList\ArrayChoiceList;
+##use Symfony\Component\Form\Extension\Core\ChoiceList;
 
 
 class DefaultController extends Controller
@@ -64,10 +67,16 @@ class DefaultController extends Controller
 
         $package = new Package();
 
+        ##$choiceList = new \Symfony\Bridge\Doctrine\Form\ChoiceList\EntityChoiceList($packageType->getPackageNameType(), $packageType->getPackage());
+
+        $choiceList = new ArrayChoiceList($packageType->getPackageNameType());
+
+
         $form = $this->createFormBuilder($packageType)
             ->add('packageType', 'choice', array(
-                'choice_list' => array($packageType->getPackageNameType(), $packageType->getPackage() ) 
-                ))
+                ##'choice_list' => new ChoiceList($packageType->getPackageNameType(), $packageType->getPackage() ) 
+                'choice_list' => $choiceList 
+            ))
 
             ->add('save', 'submit', array('label' => 'label'))
             ->getForm();
