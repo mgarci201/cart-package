@@ -61,15 +61,17 @@ class DefaultController extends Controller
      */
     public function selectPackage(Request $request)
     {
-        $packageType = $this->getDoctrine()
+        $packageTypes = $this->getDoctrine()
         ->getRepository('AppBundle:Package_Type')
-        ->findBy(array());
+        ##->findBy(array());
+        ->findAll();
 
+        
         $package = new Package();
 
         ##$choiceList = new \Symfony\Bridge\Doctrine\Form\ChoiceList\EntityChoiceList($packageType->getPackageNameType(), $packageType->getPackage());
 
-        $choiceList = new ArrayChoiceList($packageType->getPackageNameType());
+        $choiceList = new ArrayChoiceList($packageTypeArray);
 
 
         $form = $this->createFormBuilder($packageType)
