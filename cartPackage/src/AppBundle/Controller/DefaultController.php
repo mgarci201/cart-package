@@ -35,7 +35,6 @@ class DefaultController extends Controller
 
     /**
      * Finds and displays a Package entity.
-     *
      * @Route("/showpackage/{id}", name="showpackage")
      * @Method("GET")
      * @Template("default/index.html.twig")
@@ -55,8 +54,32 @@ class DefaultController extends Controller
 
     /**
      * Finds and displays a dropdown entity from package type.
-     *
-     * @Route("/dropdown", name="dropdown")
+     * @Route("/dropdownpackage", name="dropdown")
+     */
+    public function selectPackage(Request $request)
+    {
+        $packageType = $this->getDoctrine()
+        ->getRepository('AppBundle:Package_Type')
+        ->findBy(array());
+
+        $package = new Package();
+
+        $form = $this->createFormBuilder($packageType)
+            ->add('packageType', 'choice', array(
+                'choice_list' => array($packageType->getPackageNameType(), $packageType->getPackage() ) 
+                ))
+
+            ->add('save', 'submit', array('label' => 'label'))
+            ->getForm();
+
+        $form->handleRequest($request);
+
+    }
+
+
+    /**
+     * Finds and displays a dropdown entity from package type.
+     * @Route("/dropdowntest", name="dropdowntest")
      */
     public function dropdownAction(Request $request)
     {
