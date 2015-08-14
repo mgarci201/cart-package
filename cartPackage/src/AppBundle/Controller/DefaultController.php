@@ -13,9 +13,10 @@ use AppBundle\Entity\Package_Type;
 use AppBundle\Form\PackageType;
 use AppBundle\Form\DropdownPackageType;
 use Symfony\Component\Form\Extension\Core\ChoiceList\ChoiceListInterface;
-##use Symfony\Bridge\Doctrine\Form\ChoiceList\ArrayChoiceList;
-use Symfony\Component\Form\ChoiceList\ArrayChoiceList;
-##use Symfony\Component\Form\Extension\Core\ChoiceList;
+use Symfony\Component\Form\Extension\Core\ChoiceList\ChoiceList;
+use Symfony\Component\Form\FormBuilder;
+use Symfony\Component\Form\FormBuilderInterface;
+
 
 
 class DefaultController extends Controller
@@ -27,14 +28,6 @@ class DefaultController extends Controller
     {
         return $this->render('default/index.html.twig');
     }
-
-    // /**
-    //  * @Route("/cartpackage", name="cartpackage")
-    //  */
-    // public function cartAction()
-    // {
-    // 	return $this->render('default/index.html.twig');
-    // }
 
     /**
      * Finds and displays a Package entity.
@@ -56,34 +49,60 @@ class DefaultController extends Controller
     }  
 
     /**
+    * Creates a form to choose a Package entity.
+    *
+    * @param Package $entity The entity
+    *
+    * @return \Symfony\Component\Form\Form The form
+    */
+    private function createChoosePackageForm(Package $entity)
+    {
+        $form = $this->createForm(new DropdownPackageType(), $entity);
+
+        $form->add('submit', 'submit', array('label' => 'Update', 'attr' => array('class' => 'btn btn-primary')  ));
+
+        return $form;
+    }    
+
+    /**
      * Finds and displays a dropdown entity from package type.
      * @Route("/dropdownpackage", name="dropdown")
      */
-    public function selectPackage(Request $request)
-    {
-        $packageTypes = $this->getDoctrine()
-        ->getRepository('AppBundle:Package_Type')
-        ##->findBy(array());
-        ->findAll();
+    public function selectPackage()
+    { 
+        $em = $this->getDoctrine()->getManager();
+        $entities = $em->getRepository('AppBundle:Package_Type')->findAll();
 
-        
-        $package = new Package();
+        $choosePackageForm = $this->createChoosePackageForm($entity);
+        $choosePackageForm->handleRequest($request);
 
-        ##$choiceList = new \Symfony\Bridge\Doctrine\Form\ChoiceList\EntityChoiceList($packageType->getPackageNameType(), $packageType->getPackage());
+        return array(
+            'entity' =>$entity,
+            'DropdownPackageType' => $choosePackageForm->createView(),
+            );
 
-        $choiceList = new ArrayChoiceList($packageTypeArray);
+        //$packageTypes = $this->getDoctrine()
+        // ->getRepository('AppBundle:Package_Type')
+        // ##->findBy(array());
+        // ->findAll();
+
+        // $package = new Package();
+
+        // ##$choiceList = new \Symfony\Bridge\Doctrine\Form\ChoiceList\EntityChoiceList($packageType->getPackageNameType(), $packageType->getPackage());
+
+        // $choiceList = new ArrayChoiceList($packageTypes);
 
 
-        $form = $this->createFormBuilder($packageType)
-            ->add('packageType', 'choice', array(
-                ##'choice_list' => new ChoiceList($packageType->getPackageNameType(), $packageType->getPackage() ) 
-                'choice_list' => $choiceList 
-            ))
+        // $form = $this->createFormBuilder($packageTypes)
+        //     ->add('package_Type', 'choice', array(
+        //         ##'choice_list' => new ChoiceList($packageType->getPackageNameType(), $packageType->getPackage() ) 
+        //         'choices' => $choiceList 
+        //     ))
 
-            ->add('save', 'submit', array('label' => 'label'))
-            ->getForm();
+        //     ->add('save', 'submit', array('label' => 'label'))
+        //     ->getForm();
 
-        $form->handleRequest($request);
+        // $form->handleRequest($request);
 
     }
 
