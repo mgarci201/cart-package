@@ -15,8 +15,12 @@ class DropdownPackageType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
     	$builder
-    	->add('packageNameType', 'choice', array(
+    	->add('packageNameType', 'entity', array(
     		'class' => 'AppBundle:Package_Type',
+        'query_builder' => $this->queryBuilder,
+        'required' => false,
+        'expanded' => true,
+        
     		
     		 ));
     }

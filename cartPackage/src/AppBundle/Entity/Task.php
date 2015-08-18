@@ -7,6 +7,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 class Task
 {
+	/**
+	* @Assert\Type(type="AppBundle\Entity\Category")
+	* @Assert\Valid()
+	*/
+	protected $category;
+
 	protected $task;
 	protected $dueDate;
 
@@ -28,5 +34,15 @@ class Task
 	public function setDueDate(\DateTime $dueDate = null)
 	{
 		$this->dueDate = $dueDate;
+	}
+
+	public function getCategory()
+	{
+		return $this->category;
+	}
+
+	public function setCategory(Category $category = null)
+	{
+		$this->category = $category;
 	}
 }

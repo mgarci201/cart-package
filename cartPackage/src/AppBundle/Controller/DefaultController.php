@@ -71,7 +71,7 @@ class DefaultController extends Controller
     public function selectPackage()
     { 
         $em = $this->getDoctrine()->getManager();
-        $entities = $em->getRepository('AppBundle:Package_Type')->findAll();
+        $entity = $em->getRepository('AppBundle:Package_Type')->findAll();
 
         $choosePackageForm = $this->createChoosePackageForm($entity);
         $choosePackageForm->handleRequest($request);
@@ -114,6 +114,7 @@ class DefaultController extends Controller
     public function dropdownAction(Request $request)
     {
         $task = new Task();
+        $task->getCategory();
         $task->setTask('Write a test');
         $task->setDueDate(new \DateTime('tomorrow'));
 
@@ -127,5 +128,39 @@ class DefaultController extends Controller
             'form' => $form->createView(),
             ));
     }  
+
+    /**
+     * Example form with no class.
+     * @Route("/formtest", name="formtest")
+     */
+    public function contactAction(Request $request)
+    {
+        $defaultData = array('message' => 'Type message here');
+        $form = $this->createFormBuilder($defaultData)
+            ->add('salute', 'choice', array(
+                'choices' => array(
+                    'Mr', 'Mrs', 'Dr'
+                    )
+                ) 
+            )
+            ->add('name', 'text')
+            ->add('surname', 'text')
+            ->add('message', 'textarea')
+            ->add('send', 'submit')
+            ->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            //data is an array with name, emial and message
+            $data = $form->getData();
+        }
+
+        return $this->render('base.html.twig', array(
+            'form' => $form->createView(),
+            ));
+
+    }
+
 
 }
