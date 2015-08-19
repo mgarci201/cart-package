@@ -30,7 +30,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * Finds and displays a Package entity.
+     * Finds and displays a Package entity in table.
      * @Route("/showpackage/{id}", name="showpackage")
      * @Method("GET")
      * @Template("default/index.html.twig")
@@ -73,7 +73,6 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository('AppBundle:Package_Type')->findAll();
 
-        $choosePackageForm = $this->createChoosePackageForm($entity);
         $choosePackageForm->handleRequest($request);
 
         return array(
@@ -139,7 +138,7 @@ class DefaultController extends Controller
         $form = $this->createFormBuilder($defaultData)
             ->add('salute', 'choice', array(
                 'choices' => array(
-                    'Mr', 'Mrs', 'Dr'
+                    'Mr', 'Mrs'
                     )
                 ) 
             )
@@ -152,7 +151,7 @@ class DefaultController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            //data is an array with name, emial and message
+            //data is an array with name, email and message
             $data = $form->getData();
         }
 
