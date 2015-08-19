@@ -14,7 +14,7 @@ use AppBundle\Entity\Package;
 class Package_Type
 {
     /**
-     * @ORM\OneToOne(targetEntity="Package")
+     * @ORM\OneToOne(targetEntity="Package", mappedBy="package_type")
      * @ORM\JoinColumn(name="package_type_id", referencedColumnName="id")
      */
     protected $package;
@@ -85,7 +85,7 @@ class Package_Type
     /**
      * Get package
      *
-     * @return \AppBundle\Entity\Package 
+     * @return \AppBundle\Entity\Package
      */
     public function getPackage()
     {
