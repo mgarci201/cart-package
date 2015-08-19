@@ -82,19 +82,19 @@ class DefaultController extends Controller
 
         //$packageTypes = $this->getDoctrine()
         // ->getRepository('AppBundle:Package_Type')
-        // ##->findBy(array());
+        // ->findBy(array());
         // ->findAll();
 
         // $package = new Package();
 
-        // ##$choiceList = new \Symfony\Bridge\Doctrine\Form\ChoiceList\EntityChoiceList($packageType->getPackageNameType(), $packageType->getPackage());
+        // $choiceList = new \Symfony\Bridge\Doctrine\Form\ChoiceList\EntityChoiceList($packageType->getPackageNameType(), $packageType->getPackage());
 
         // $choiceList = new ArrayChoiceList($packageTypes);
 
 
         // $form = $this->createFormBuilder($packageTypes)
         //     ->add('package_Type', 'choice', array(
-        //         ##'choice_list' => new ChoiceList($packageType->getPackageNameType(), $packageType->getPackage() ) 
+        //         'choice_list' => new ChoiceList($packageType->getPackageNameType(), $packageType->getPackage() ) 
         //         'choices' => $choiceList 
         //     ))
 
@@ -132,7 +132,7 @@ class DefaultController extends Controller
      * Example form with no class.
      * @Route("/formtest", name="formtest")
      */
-    public function contactAction(Request $request)
+    public function exampleDropAction(Request $request)
     {
         $defaultData = array('message' => 'Type message here');
         $form = $this->createFormBuilder($defaultData)
@@ -161,5 +161,21 @@ class DefaultController extends Controller
 
     }
 
+    /**
+     * Lists all Package entities.
+     *
+     * @Route("/packagetype", name="packagetypes")
+     * @Method("GET")
+     * @Template("default/packageType.html.twig")
+     */
+    public function packageTypeAction()
+    {
+        $em = $this->getDoctrine()->getManager();
 
+        $entities = $em->getRepository('AppBundle:Package_Type')->findAll();
+
+        return array(
+            'entities' => $entities,
+        );
+    }
 }

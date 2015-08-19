@@ -1,0 +1,41 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+    <h1>Package Type List</h1>
+
+	<form class="form-inline" style="float: left;">
+		<div class="form-group">
+		<label>Date: </label>
+			<select class="form-control">
+				<option>02-10-2015</option>
+				<option>03-10-2015</option>
+				<option>04-10-2015</option>
+				<option>05-10-2015</option>															
+			</select>
+		</div>&nbsp;&nbsp;
+	</form><br><br>
+	<br><br> 
+
+    <table class="table table-bordered">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <th width="50%">Package Type</th>
+            </tr>
+
+            {% for entity in entities %}
+            <tr>
+            	<td>{{ entity.id }}</td>
+            	<td>{{ entity.packageNameType }}</td>
+            </tr> 
+        {% endfor %}  
+
+        </tbody>
+    </table>
+
+	<p style="float: right;"><button type="button" class="btn btn-primary btn-lg">Continue</button></p>
+
+</div>
+
+{% endblock %}
