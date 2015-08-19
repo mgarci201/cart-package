@@ -68,4 +68,27 @@ class Package_Type
     {
         return $this->packageNameType;
     }
+
+    /**
+     * Set package
+     *
+     * @param \AppBundle\Entity\Package $package
+     * @return Package_Type
+     */
+    public function setPackage(\AppBundle\Entity\Package $package = null)
+    {
+        $this->package = $package;
+
+        return $this;
+    }
+
+    /**
+     * Get package
+     *
+     * @return \AppBundle\Entity\Package 
+     */
+    public function getPackage()
+    {
+        return $this->package;
+    }
 }

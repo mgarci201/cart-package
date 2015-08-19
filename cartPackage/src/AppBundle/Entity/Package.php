@@ -11,6 +11,10 @@ use AppBundle\Entity\Package_Type;
  * @ORM\Table()
  * @ORM\Entity
  */
+
+/**
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\PackageRepository")
+ */
 class Package
 {
 
