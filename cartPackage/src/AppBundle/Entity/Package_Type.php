@@ -4,7 +4,6 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use AppBundle\Entity\Package;
-use AppBundle\Entity\Package_Type;
 
 
 /**
@@ -92,4 +91,14 @@ class Package_Type
     {
         return $this->package;
     }
+
+    /**
+     * Get package
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->package;
+    }    
 }
