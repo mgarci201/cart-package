@@ -9,12 +9,9 @@ use AppBundle\Entity\Package_Type;
  * Package
  *
  * @ORM\Table()
- * @ORM\Entity
- */
-
-/**
  * @ORM\Entity(repositoryClass="AppBundle\Repository\PackageRepository")
  */
+
 class Package
 {
 
@@ -30,7 +27,7 @@ class Package
 
     /**
      * @var string
-     *
+     * @ORM\OneToOne(targetEntity="Package_Type", mappedBy="package")
      * @ORM\Column(name="package", type="string", length=255)
      */
     private $package;
@@ -48,7 +45,7 @@ class Package
      * @ORM\Column(name="cost", type="string")
      */
     private $cost;
-
+    
 
     /**
      * Get id

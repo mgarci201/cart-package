@@ -4,21 +4,16 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use AppBundle\Entity\Package;
+use AppBundle\Entity\Package_Type;
+
 
 /**
  * Package_Type
- *
  * @ORM\Table()
  * @ORM\Entity
  */
 class Package_Type
 {
-    /**
-     * @ORM\OneToOne(targetEntity="Package", mappedBy="package_type")
-     * @ORM\JoinColumn(name="package_type_id", referencedColumnName="id")
-     */
-    protected $package;
-
     /**
      * @var integer
      *
@@ -34,6 +29,12 @@ class Package_Type
      * @ORM\Column(name="package_name_type", type="string", length=255)
      */
     private $packageNameType;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Package", mappedBy="package_type")
+     * @ORM\JoinColumn(name="package_type_id", referencedColumnName="id")
+     */
+    protected $package;    
 
 
     /**
