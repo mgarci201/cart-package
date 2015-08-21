@@ -4,12 +4,12 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use AppBundle\Entity\Package;
-
+use AppBundle\Repository\PackageTypeRepository;
 
 /**
  * Package_Type
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\PackageTypeRepository")
  */
 class Package_Type
 {

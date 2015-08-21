@@ -15,7 +15,6 @@ use AppBundle\Entity\Package_Type;
 class Package
 {
 
-
     /**
      * @var integer
      *
@@ -125,4 +124,5 @@ class Package
     {
         return $this->cost;
     }
+
 }

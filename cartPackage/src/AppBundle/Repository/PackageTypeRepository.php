@@ -6,17 +6,16 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\EntityRepository;
 use AppBundle\Entity\Package_Type;
 
-class PackageRepository extends EntityRepository
+class PackageTypeRepository extends EntityRepository
 {
-	public function findAll()
+	public function findPackageType()
 	{
-		return $this->getEntityManager()
-		->createQuery(
-		'SELECT p, pt 
-		FROM AppBundle:Package_Type pt
-		JOIN pt.package p'
+		return $this->getEntityManager()->createQuery(
+		"Select pt.packageNameType, p.package, p.numbers, p.cost 
+			From AppBundle:Package_Type pt
+			Inner Join AppBundle:Package p 
+			Where pt.package=p.id"
 			)
-
 		->getResult();
 	}
 }

@@ -173,7 +173,7 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('AppBundle:Package_Type')->findAll();
+        $entities = $em->getRepository('AppBundle:Package_Type')->findPackageType();
 
         return array(
             'entities' => $entities,

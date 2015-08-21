@@ -20,14 +20,18 @@
     <table class="table table-bordered">
         <tbody>
             <tr>
-                <th>Id</th>
-                <th width="50%">Package Type</th>
+                <th>Package Type</th>
+                <th width="50%">Package</th>
+                <th>Numbers</th>
+                <th>Cost</th>                
             </tr>
 
-            {% for entity in entities %}
+        {% for entity in entities %}
             <tr>
-            	<td>{{ entity.id }}</td>
             	<td>{{ entity.packageNameType }}</td>
+                <td>{{ entity.package }}</td>
+                <td>{{ entity.numbers }}</td>
+                <td>&pound;{{ entity.cost }}</td>
             </tr> 
         {% endfor %}  
 
