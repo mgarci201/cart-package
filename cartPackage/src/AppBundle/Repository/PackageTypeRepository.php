@@ -8,7 +8,7 @@ use AppBundle\Entity\Package_Type;
 
 class PackageTypeRepository extends EntityRepository
 {
-	public function findPackageType()
+	public function findAssociatedPackageType()
 	{
 		return $this->getEntityManager()->createQuery(
 		"Select pt.packageNameType, p.package, p.numbers, p.cost 
