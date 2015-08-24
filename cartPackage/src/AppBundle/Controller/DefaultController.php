@@ -137,16 +137,12 @@ class DefaultController extends Controller
     {
         $defaultData = array('message' => 'Type message here');
         $form = $this->createFormBuilder($defaultData)
-            ->add('salute', 'choice', array(
-                'choices' => array(
-                    'Mr', 'Mrs'
-                    )
-                ) 
-            )
-            ->add('name', 'text')
-            ->add('surname', 'text')
-            ->add('message', 'textarea')
-            ->add('send', 'submit')
+            ->add('package', 'entity', array(
+                'class' => 'AppBundle:Package_Type',
+                'choice_label' => 'packageNameType',
+                ))
+
+            ->add('continue', 'submit')
             ->getForm();
 
         $form->handleRequest($request);

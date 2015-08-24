@@ -16,8 +16,9 @@ class ChoosePackage extends AbstractType
      {
      	$builder
      		->add('package_type', 'choice', array(
-     		'choices' => array(
-     			'VIP', 'VIP2')));
+     		'choices' => 'AppBundle:Package_Type',
+     		'required' => false,
+     		));
      }
 
 	 /**
@@ -29,5 +30,13 @@ class ChoosePackage extends AbstractType
      		'data_class' => 'AppBundle\Entity\Package_Type',
      		));
      }  
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return 'appbundle_choosePackage';
+    }     
 
 }

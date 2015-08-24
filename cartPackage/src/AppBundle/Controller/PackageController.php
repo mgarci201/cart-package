@@ -242,7 +242,6 @@ class PackageController extends Controller
             ->setAction($this->generateUrl('package_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete', 'attr' => array('class' => 'btn btn-danger')))
-            ->getForm()
-        ;
+            ->getForm();
     }
 }
