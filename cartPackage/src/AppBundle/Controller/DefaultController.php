@@ -135,11 +135,12 @@ class DefaultController extends Controller
      */
     public function exampleDropAction(Request $request)
     {
-        $defaultData = array('message' => 'Type message here');
-        $form = $this->createFormBuilder($defaultData)
+
+        $form = $this->createFormBuilder()
             ->add('package', 'entity', array(
                 'class' => 'AppBundle:Package_Type',
                 'choice_label' => 'packageNameType',
+
                 ))
 
             ->add('continue', 'submit')

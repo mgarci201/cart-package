@@ -36,6 +36,7 @@ class PackageController extends Controller
             'entities' => $entities,
         );
     }
+    
     /**
      * Creates a new Package entity.
      *

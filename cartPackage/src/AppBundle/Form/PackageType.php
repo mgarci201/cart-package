@@ -18,7 +18,6 @@ class PackageType extends AbstractType
             ->add('package')
             ->add('numbers')
             ->add('cost');
-
     }
     
     /**

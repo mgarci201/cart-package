@@ -36,7 +36,7 @@ class ChoosePackage extends AbstractType
      */
     public function getName()
     {
-        return 'appbundle_choosePackage';
+        return 'appbundle_choose_package';
     }     
 
 }
