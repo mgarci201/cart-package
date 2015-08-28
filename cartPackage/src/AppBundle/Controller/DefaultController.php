@@ -2,12 +2,13 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Task;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpFoundation\Response;
+use AppBundle\Entity\Task;
 use AppBundle\Entity\Package;
 use AppBundle\Entity\Package_Type;
 use AppBundle\Form\PackageType;
@@ -130,36 +131,6 @@ class DefaultController extends Controller
     }  
 
     /**
-     * Example form with no class.
-     * @Route("/formtest", name="formtest")
-     */
-    public function exampleDropAction(Request $request)
-    {
-
-        $form = $this->createFormBuilder()
-            ->add('package', 'entity', array(
-                'class' => 'AppBundle:Package_Type',
-                'choice_label' => 'packageNameType',
-
-                ))
-
-            ->add('continue', 'submit')
-            ->getForm();
-
-        $form->handleRequest($request);
-
-        if ($form->isValid()) {
-            //data is an array with name, email and message
-            $data = $form->getData();
-        }
-
-        return $this->render('base.html.twig', array(
-            'form' => $form->createView(),
-            ));
-
-    }
-
-    /**
      * Lists all Package entities.
      *
      * @Route("/packagetype", name="packagetypes")
@@ -176,4 +147,44 @@ class DefaultController extends Controller
             'entities' => $entities,
         );
     }
+
+    /**
+     * Example form with no class.
+     * @Route("/formtest", name="formtest")
+     */
+    public function exampleDropAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $form = $this->createFormBuilder()
+            ->add('package')
+            ->add('package', 'entity', array(
+                'empty_value' => '-Select Package Type-',
+                'class' => 'AppBundle:Package_Type',
+                'choice_label' => 'packageNameType',
+                'property' => 'package',
+                ))
+
+            ->add('continue', 'submit')
+            ->getForm();
+
+        $form->handleRequest($request);
+
+        //From should display related package
+        if ($form->isSubmitted() && $form->isValid()) {
+
+
+            // $package = $em->getRepository('AppBundle:Package_Type')->findAssociatedPackageType();
+
+            // $em->persist($package);
+            // $em->flush();
+            return new Response('You have chosen!');
+
+            //return $this->redirect($this->generateUrl('package_show', array('id' => $entity->getId())));
+        }
+
+        return $this->render('base.html.twig', array(
+            'form' => $form->createView(),
+            ));
+    }    
 }
