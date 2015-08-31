@@ -15,10 +15,12 @@ class ChoosePackage extends AbstractType
      public function buildForm(FormBuilderInterface $builder, array $options)
      {
      	$builder
-     		->add('package_type', 'choice', array(
-     		'choices' => 'AppBundle:Package_Type',
-     		'required' => false,
-     		));
+     		->add('package', 'entity', array (
+     		'class' => 'AppBundle:Package_Type',
+     		'choices' => $package->findAssociatedPackageType(),
+     		))
+
+            ->add('save', 'submit');
      }
 
 	 /**
@@ -36,7 +38,7 @@ class ChoosePackage extends AbstractType
      */
     public function getName()
     {
-        return 'appbundle_choose_package';
+        return 'choose_package';
     }     
 
 }

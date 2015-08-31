@@ -154,7 +154,9 @@ class DefaultController extends Controller
      */
     public function exampleDropAction(Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
+        $package = new Package();
+        $package_type = $this->getDoctrine()->getRepository('AppBundle:Package_Type')
+            ->findAssociatedPackageType();
 
         $form = $this->createFormBuilder()
             ->add('package')
@@ -173,15 +175,16 @@ class DefaultController extends Controller
         //From should display related package
         if ($form->isSubmitted() && $form->isValid()) {
 
+            $data = $form->getData();
 
-            // $package = $em->getRepository('AppBundle:Package_Type')->findAssociatedPackageType();
-
+            //return new Response('You have chosen: '.$form);
+            // $em = $this->getDoctrine()->getManager();
             // $em->persist($package);
-            // $em->flush();
-            return new Response('You have chosen!');
+            // $em->flush();   
+            exit(\Doctrine\Common\Util\Debug::dump($package_type));            
 
-            //return $this->redirect($this->generateUrl('package_show', array('id' => $entity->getId())));
-        }
+            //return $this->redirect($this->generateUrl('package_show', array('id' => $package->getId())));          
+        } 
 
         return $this->render('base.html.twig', array(
             'form' => $form->createView(),
