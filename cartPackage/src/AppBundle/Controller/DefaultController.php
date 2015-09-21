@@ -177,7 +177,6 @@ class DefaultController extends Controller
 
             $data = $form->getData();
 
-            //return new Response('You have chosen: '.$form);
             // $em = $this->getDoctrine()->getManager();
             // $em->persist($package);
             // $em->flush();   
