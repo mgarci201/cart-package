@@ -21,7 +21,7 @@ use Symfony\Component\Form\FormBuilder;
 use Symfony\Component\Form\FormBuilderInterface;
 use AppBundle\Repository\PackageTypeRepository;
 use AppBundle\Entity\Account;
-use AppBundle\Form\Type\AccountType;
+use AppBundle\Form\AccountType;
 
 
 
@@ -71,7 +71,6 @@ class DefaultController extends Controller
         return $this->render('default/index2.html.twig', array('form' =>createView()));
 
     }
-
 
     /**
      * @Route("/app/example", name="homepage")
