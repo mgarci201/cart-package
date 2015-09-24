@@ -8,6 +8,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use AppBundle\Entity\Task;
 use AppBundle\Entity\Package;
 use AppBundle\Entity\Package_Type;
@@ -18,11 +20,59 @@ use Symfony\Component\Form\Extension\Core\ChoiceList\ChoiceList;
 use Symfony\Component\Form\FormBuilder;
 use Symfony\Component\Form\FormBuilderInterface;
 use AppBundle\Repository\PackageTypeRepository;
+use AppBundle\Entity\Account;
+use AppBundle\Form\Type\AccountType;
 
 
 
 class DefaultController extends Controller
 {
+    public function ajaxAction(Request $request)
+    {
+        if (! $request->isXmlHttpRequest()) {
+            throw new NotFoundHttpException();
+        }
+
+        //get Province ID 
+        $id = $request->query->get('province_id');
+
+        $result = array();
+
+        // Return list of cities, based on the selected province
+        $repo = $this->getDoctrine()->getManager()->getRepository('AppBundle:City');
+        $cities = $repo->findByProvince($id, array('name' => 'asc'));
+        foreach ($cities as $city) {
+            $result[$city->getName()] = $city->getId();
+        }
+
+        return new JsonResponse($result);
+    }
+
+    /**
+     * Example form with no class.
+     * @Route("/bindtest", name="bindtest")
+     */    
+    public function createAction(Request $request)
+    {
+        $account = new Account();
+
+        //use service and inject automatically
+        $form = $this->createForm(new AccountType($this->getDoctrine()->getManager()), $account);
+
+        $form->handleRequest($request);
+
+        if($form->isValid())
+        {
+
+            $this->getDoctrine()->getManager()->persist($account);
+            $this->getDoctrine()->getManager()->flush();
+        }
+
+        return $this->render('default/index2.html.twig', array('form' =>createView()));
+
+    }
+
+
     /**
      * @Route("/app/example", name="homepage")
      */
@@ -188,5 +238,8 @@ class DefaultController extends Controller
         return $this->render('base.html.twig', array(
             'form' => $form->createView(),
             ));
-    }    
+    } 
+
+
+
 }

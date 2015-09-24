@@ -1,18 +1,18 @@
-<?php 
+<?php
 
 namespace AppBundle\Form\Type;
 
 use Doctrine\ORM\EntityManager;
 use AppBundle\Entity\Province;
-use Symfony\Component\FormEvent;
-use Symfony\Component\FormEvents;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 use Symfony\Component\FormInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class AccountType extends AbstractType {
-
+class AccountType extends AbstractType 
+{
 	protected $em;
 
 	function __construct(EntityManager $em)
