@@ -29,11 +29,9 @@ class City
     private $name;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="province", type="string", length=255)
-     */
-    private $province;
+    * @ORM\ManyToOne(targetEntity="Province", inversedBy="cities")
+    */
+    protected $province;
 
 
     /**
@@ -69,13 +67,15 @@ class City
         return $this->name;
     }
 
+
+
     /**
      * Set province
      *
-     * @param string $province
+     * @param \AppBundle\Entity\Province $province
      * @return City
      */
-    public function setProvince($province)
+    public function setProvince(\AppBundle\Entity\Province $province = null)
     {
         $this->province = $province;
 
@@ -85,7 +85,7 @@ class City
     /**
      * Get province
      *
-     * @return string 
+     * @return \AppBundle\Entity\Province 
      */
     public function getProvince()
     {

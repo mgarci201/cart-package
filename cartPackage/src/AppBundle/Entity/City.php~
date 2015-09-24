@@ -5,12 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Account
+ * City
  *
  * @ORM\Table()
  * @ORM\Entity
  */
-class Account
+class City
 {
     /**
      * @var integer
@@ -29,9 +29,9 @@ class Account
     private $name;
 
     /**
-    * @ORM\ManyToOne(targetEntity="City")
+    * @ORM\ManyToOne(targetEntity="Province", inversedBy="cities")
     */
-    protected $city;
+    protected $province;
 
 
     /**
@@ -48,7 +48,7 @@ class Account
      * Set name
      *
      * @param string $name
-     * @return Account
+     * @return City
      */
     public function setName($name)
     {
@@ -68,26 +68,4 @@ class Account
     }
 
 
-    /**
-     * Set city
-     *
-     * @param \AppBundle\Entity\City $city
-     * @return Account
-     */
-    public function setCity(\AppBundle\Entity\City $city = null)
-    {
-        $this->city = $city;
-
-        return $this;
-    }
-
-    /**
-     * Get city
-     *
-     * @return \AppBundle\Entity\City 
-     */
-    public function getCity()
-    {
-        return $this->city;
-    }
 }

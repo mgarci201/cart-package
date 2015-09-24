@@ -29,11 +29,9 @@ class Province
     private $name;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="cities", type="string", length=255)
+     * @ORM\OneToMany(targetEntity="City", mappedBy="province")
      */
-    private $cities;
+    protected $cities;
 
 
     /**
@@ -69,23 +67,42 @@ class Province
         return $this->name;
     }
 
+
     /**
-     * Set cities
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->cities = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add cities
      *
-     * @param string $cities
+     * @param \AppBundle\Entity\City $cities
      * @return Province
      */
-    public function setCities($cities)
+    public function addCity(\AppBundle\Entity\City $cities)
     {
-        $this->cities = $cities;
+        $this->cities[] = $cities;
 
         return $this;
     }
 
     /**
+     * Remove cities
+     *
+     * @param \AppBundle\Entity\City $cities
+     */
+    public function removeCity(\AppBundle\Entity\City $cities)
+    {
+        $this->cities->removeElement($cities);
+    }
+
+    /**
      * Get cities
      *
-     * @return string 
+     * @return \Doctrine\Common\Collections\Collection 
      */
     public function getCities()
     {
