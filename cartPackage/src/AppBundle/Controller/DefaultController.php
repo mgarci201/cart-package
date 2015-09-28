@@ -21,56 +21,57 @@ use Symfony\Component\Form\FormBuilder;
 use Symfony\Component\Form\FormBuilderInterface;
 use AppBundle\Repository\PackageTypeRepository;
 use AppBundle\Entity\Account;
-use AppBundle\Form\AccountType;
+use AppBundle\Form\Type\AccountType;
+use AppBundle\Form\CategoryPackageType;
 
 
 
 class DefaultController extends Controller
 {
-    public function ajaxAction(Request $request)
-    {
-        if (! $request->isXmlHttpRequest()) {
-            throw new NotFoundHttpException();
-        }
+    // public function ajaxAction(Request $request)
+    // {
+    //     if (! $request->isXmlHttpRequest()) {
+    //         throw new NotFoundHttpException();
+    //     }
 
-        //get Province ID 
-        $id = $request->query->get('province_id');
+    //     //get Province ID 
+    //     $id = $request->query->get('province_id');
 
-        $result = array();
+    //     $result = array();
 
-        // Return list of cities, based on the selected province
-        $repo = $this->getDoctrine()->getManager()->getRepository('AppBundle:City');
-        $cities = $repo->findByProvince($id, array('name' => 'asc'));
-        foreach ($cities as $city) {
-            $result[$city->getName()] = $city->getId();
-        }
+    //     // Return list of cities, based on the selected province
+    //     $repo = $this->getDoctrine()->getManager()->getRepository('AppBundle:City');
+    //     $cities = $repo->findByProvince($id, array('name' => 'asc'));
+    //     foreach ($cities as $city) {
+    //         $result[$city->getName()] = $city->getId();
+    //     }
 
-        return new JsonResponse($result);
-    }
+    //     return new JsonResponse($result);
+    // }
 
-    /**
-     * Example form with no class.
-     * @Route("/bindtest", name="bindtest")
-     */    
-    public function createAction(Request $request)
-    {
-        $account = new Account();
+    // /**
+    //  * Example form with no class.
+    //  * @Route("/bindtest", name="bindtest")
+    //  */    
+    // public function createAction(Request $request)
+    // {
+    //     $account = new Account();
 
-        //use service and inject automatically
-        $form = $this->createForm(new AccountType($this->getDoctrine()->getManager()), $account);
+    //     //use service and inject automatically
+    //     $form = $this->createForm(new AccountType($this->getDoctrine()->getManager()), $account);
 
-        $form->handleRequest($request);
+    //     $form->handleRequest($request);
 
-        if($form->isValid())
-        {
+    //     if($form->isValid())
+    //     {
 
-            $this->getDoctrine()->getManager()->persist($account);
-            $this->getDoctrine()->getManager()->flush();
-        }
+    //         $this->getDoctrine()->getManager()->persist($account);
+    //         $this->getDoctrine()->getManager()->flush();
+    //     }
 
-        return $this->render('default/index2.html.twig', array('form' =>createView()));
+    //     return $this->render('default/index2.html.twig', array('form' =>createView()));
 
-    }
+    // }
 
     /**
      * @Route("/app/example", name="homepage")
@@ -237,8 +238,25 @@ class DefaultController extends Controller
         return $this->render('base.html.twig', array(
             'form' => $form->createView(),
             ));
-    } 
+    }
 
+
+    /**
+     * Example form with no class.
+     * @Route("/packageformtype", name="packageformtype")
+     */     
+    public function createAction(Request $request)
+    {
+        $categoryPackage = new Package_Type();
+        $form = $this->createForm(new CategoryPackageType(), $categoryPackage);
+        $form->handleRequest($request);
+        if ($form->valid()) {
+            // save the package redirect etc..
+        }
+
+        return $this->render(
+            'default/create.html.twig', array('form' => $form->createView()));
+    }
 
 
 }

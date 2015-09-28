@@ -1,0 +1,36 @@
+{# app/resources/views/default/create.html.twig #}
+
+{{ form_start(form) }}
+	{{ form_row(form.packageType) }} {# <select id="packageType" ... #}
+	{{ form_row(form.package) }} {# <select id="package" ... #}
+
+{{ form_end(form) }}
+
+<script>
+var $packageType = $('#categoryPackageType_packageType');
+
+//when packagetype gets selected
+$packageType change(function() {
+
+	// retrieve form
+	var $form = $(this).closest('form');
+
+	//simulate form data, only include selected PT
+	var $data = {};
+	data[$packageType.attr('packageNameType')] = $packageType.val();
+
+	//submit data via ajax to forms action path
+	$.ajax({
+	url : $form.attr('action'),
+	type : $form.attr('method'),
+	data : data,
+		success: function(html) {
+			$('#categoryPackageType_package').replaceWith(
+			//...with returned data from AJAX
+			$(html).find('#categoryPackageType_package')
+			);
+
+		}
+	});
+});
+</script>
