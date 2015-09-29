@@ -209,7 +209,7 @@ class DefaultController extends Controller
             ->findAssociatedPackageType();
 
         $form = $this->createFormBuilder()
-            ->add('package')
+            ##->add('package')
             ->add('package', 'entity', array(
                 'empty_value' => '-Select Package Type-',
                 'class' => 'AppBundle:Package_Type',
@@ -225,11 +225,10 @@ class DefaultController extends Controller
         //From should display related package
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $data = $form->getData();
-
-            // $em = $this->getDoctrine()->getManager();
-            // $em->persist($package);
-            // $em->flush();   
+           $package_type = $form->getData();
+             //$em = $this->getDoctrine()->getManager();
+             //$em->persist($package_type);
+             //$em->flush();   
             exit(\Doctrine\Common\Util\Debug::dump($package_type));            
 
             //return $this->redirect($this->generateUrl('package_show', array('id' => $package->getId())));          
@@ -239,7 +238,6 @@ class DefaultController extends Controller
             'form' => $form->createView(),
             ));
     }
-
 
     /**
      * Example form with no class.

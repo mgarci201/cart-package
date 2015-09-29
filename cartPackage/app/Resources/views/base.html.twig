@@ -39,6 +39,10 @@
             
             {{ form_start(form) }}
                 {{ form_widget(form) }}
+                {{ form_label(form.name, 'field', {
+                    'label_attr': {'class': 'CUSTOM_LABEL_CLASS'}
+                    })
+                 }}
             {{ form_end(form) }}
 
         {% endblock %}

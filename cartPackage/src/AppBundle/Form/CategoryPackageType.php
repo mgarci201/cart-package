@@ -11,13 +11,13 @@ use AppBundle\Entity\Package_Type;
 
 class CategoryPackageType extends AbstractType
 {
+
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
 		$builder->add('package_type', 'entity', array(
 				'class' => 'AppBundle:Package_Type',
 				'placeholder' => '',
 				));
-		;
 
 		$formModifier = function (FormInterface $form, Package_Type $package_type = null)
 		{
@@ -54,5 +54,5 @@ class CategoryPackageType extends AbstractType
 			}
 		);
 	}
-
+	
 }
