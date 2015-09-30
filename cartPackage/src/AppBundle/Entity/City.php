@@ -91,4 +91,9 @@ class City
     {
         return $this->province;
     }
+
+    function __toString()
+    {
+        return $this->getName();
+    }
 }

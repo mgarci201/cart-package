@@ -1,32 +1,31 @@
 <?php
 
-namespace AppBundle\Form\Type;
+namespace AppBundle\Form\SportMeetupType;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
-use AppBundle\Entity\Package_Type;
+use AppBundle\Entity\Sport;
 
-class CategoryPackageType extends AbstractType
+class SportMeetupType extends AbstractType
 {
 
 	public function buildForm(FormBuilderInterface $builder, array $options)
 	{
-		$builder->add('package_type', 'entity', array(
+		$builder->add('sport', 'entity', array(
 				'class' => 'AppBundle:Package_Type',
 				'placeholder' => '',
 				));
 
-		$formModifier = function (FormInterface $form, Package_Type $package_type = null)
-		{
-			$packages = null === $package_type ? array() : $package_type->getAvailablePackages();
+		$formModifier = function (FormInterface $form, Sport $sport = null)	{
+			$positions = null === $sport ? array() : $sport->getAvailablePositions();
 
 			$form->add('package', 'entity', array(
-					'class' => 'AppBundle:Package',
+					'class' => 'AppBundle:Positions',
 					'placeholder' => '',
-					'choices' => $packages,
+					'choices' => $positions,
 					));
 		};
 
@@ -37,20 +36,20 @@ class CategoryPackageType extends AbstractType
 				//this would be my entity for packages
 				$data = $event->getData();
 
-				$formModifier($event->getForm(), $data->getPackageNameType());
+				$formModifier($event->getForm(), $data->getSport());
 			}
 		);
 
-		$builder->get('package_type')->addEventListener(
+		$builder->get('sport')->addEventListener(
 			FormEvents::POST_SUBMIT,
 			function(FormEvent $event) use ($formModifier) {
             // It's important here to fetch $event->getForm()->getData(), as
             // $event->getData() will get you the client data (that is, the ID)
-            $package_type = $event->getForm()->getData();
+            $sport = $event->getForm()->getData();
 
             // since we've added the listener to the child, we'll have to pass on
             // the parent to the callback functions!
-            $formModifier($event->getForm()->getParent(), $package_type);            			
+            $formModifier($event->getForm()->getParent(), $sport);            			
 			}
 		);
 	}

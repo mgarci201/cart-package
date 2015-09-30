@@ -30,8 +30,8 @@ class AccountType extends AbstractType
 		$builder->add('save', 'submit');
 
 		//Add listeners 
-		$builder->addEventListener(FormEvents::PRE_SET_DATA, array($this, 'onPreSetData'));
-		$builder->addEventListener(FormEvents::PRE_SUBMIT, array($this, 'onPreSubmit'));
+        $builder->addEventListener(FormEvents::PRE_SET_DATA, array($this, 'onPreSetData'));
+        $builder->addEventListener(FormEvents::PRE_SUBMIT, array($this, 'onPreSubmit'));
 	}
 
 	protected function addElements(FormInterface $form, Province $province = null)

@@ -108,4 +108,9 @@ class Province
     {
         return $this->cities;
     }
+
+    function __toString()
+    {
+        return $this->getName();
+    }
 }

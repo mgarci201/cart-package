@@ -1,0 +1,35 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+<div class="container">
+    <h1>Package</h1>
+
+    <table class="record_properties">
+        <tbody>     
+            <tr>
+                <th>Id</th>
+                <td>{{ package_type.id }}</td>
+            </tr>
+            <tr>
+                <th>Package</th>
+                <td>{{ package_type.package }}</td>
+            </tr>
+            <tr>
+                <th>Numbers</th>
+                <td>{{ package_type.numbers }}</td>
+            </tr>
+            <tr>
+                <th>Cost</th>
+                <td>{{ package_type.cost }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('package') }}">Back to the list</a>
+    </li>
+
+</ul>
+</div>
+{% endblock %}
