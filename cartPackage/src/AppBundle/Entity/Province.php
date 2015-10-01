@@ -29,6 +29,19 @@ class Province
     private $name;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="slug", type="string", length=255, unique=true)
+     */
+    private $slug;    
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Country", inversedBy="provinces")
+     * @ORM\JoinColumn(name="country_id", referencedColumnName="id")
+     */
+    protected $country;     
+
+    /**
      * @ORM\OneToMany(targetEntity="City", mappedBy="province")
      */
     protected $cities;
@@ -112,5 +125,51 @@ class Province
     function __toString()
     {
         return $this->getName();
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return Province
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * Set country
+     *
+     * @param \AppBundle\Entity\Country $country
+     * @return Province
+     */
+    public function setCountry(\AppBundle\Entity\Country $country = null)
+    {
+        $this->country = $country;
+
+        return $this;
+    }
+
+    /**
+     * Get country
+     *
+     * @return \AppBundle\Entity\Country 
+     */
+    public function getCountry()
+    {
+        return $this->country;
     }
 }

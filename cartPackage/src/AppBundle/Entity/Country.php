@@ -5,12 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Province
+ * Country
  *
  * @ORM\Table()
  * @ORM\Entity
  */
-class Province
+class Country
 {
     /**
      * @var integer
@@ -31,20 +31,14 @@ class Province
     /**
      * @var string
      *
-     * @ORM\Column(name="slug", type="string", length=255, unique=true)
+     * @ORM\Column(name="slug", type="string", length=255)
      */
-    private $slug;    
+    private $slug;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Country", inversedBy="provinces")
-     * @ORM\JoinColumn(name="country_id", referencedColumnName="id")
+     * @ORM\OneToMany(targetEntity="Province", mappedBy="country")
      */
-    protected $country;     
-
-    /**
-     * @ORM\OneToMany(targetEntity="City", mappedBy="province")
-     */
-    protected $cities;
+    protected $provinces;
 
 
     /**
@@ -61,7 +55,7 @@ class Province
      * Set name
      *
      * @param string $name
-     * @return Province
+     * @return Country
      */
     public function setName($name)
     {
@@ -80,50 +74,66 @@ class Province
         return $this->name;
     }
 
-
     /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->cities = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add cities
+     * Set slug
      *
-     * @param \AppBundle\Entity\City $cities
-     * @return Province
+     * @param string $slug
+     * @return Country
      */
-    public function addCity(\AppBundle\Entity\City $cities)
+    public function setSlug($slug)
     {
-        $this->cities[] = $cities;
+        $this->slug = $slug;
 
         return $this;
     }
 
     /**
-     * Remove cities
+     * Get slug
      *
-     * @param \AppBundle\Entity\City $cities
+     * @return string 
      */
-    public function removeCity(\AppBundle\Entity\City $cities)
+    public function getSlug()
     {
-        $this->cities->removeElement($cities);
+        return $this->slug;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->provinces = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
-     * Get cities
+     * Add provinces
+     *
+     * @param \AppBundle\Entity\Province $provinces
+     * @return Country
+     */
+    public function addProvince(\AppBundle\Entity\Province $provinces)
+    {
+        $this->provinces[] = $provinces;
+
+        return $this;
+    }
+
+    /**
+     * Remove provinces
+     *
+     * @param \AppBundle\Entity\Province $provinces
+     */
+    public function removeProvince(\AppBundle\Entity\Province $provinces)
+    {
+        $this->provinces->removeElement($provinces);
+    }
+
+    /**
+     * Get provinces
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getCities()
+    public function getProvinces()
     {
-        return $this->cities;
-    }
-
-    function __toString()
-    {
-        return $this->getName();
+        return $this->provinces;
     }
 }

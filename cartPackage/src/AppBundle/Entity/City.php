@@ -29,7 +29,16 @@ class City
     private $name;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="slug", type="string", length=255, unique=true)
+     */
+    private $slug;
+
+
+    /**
     * @ORM\ManyToOne(targetEntity="Province", inversedBy="cities")
+    * @ORM\JoinColumn(name="province_id", referencedColumnName="id")
     */
     protected $province;
 
@@ -95,5 +104,28 @@ class City
     function __toString()
     {
         return $this->getName();
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return City
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }

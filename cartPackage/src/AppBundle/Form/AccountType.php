@@ -95,7 +95,7 @@ class AccountType extends AbstractType
 
 	public function getName()
 	{
-		return "account_type";
+		return 'account_type';
 	}
 
 }

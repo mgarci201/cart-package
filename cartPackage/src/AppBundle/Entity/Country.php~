@@ -5,12 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Account
+ * Country
  *
  * @ORM\Table()
  * @ORM\Entity
  */
-class Account
+class Country
 {
     /**
      * @var integer
@@ -29,10 +29,16 @@ class Account
     private $name;
 
     /**
-    * @ORM\ManyToOne(targetEntity="City")
-    */
-    protected $city;
+     * @var string
+     *
+     * @ORM\Column(name="slug", type="string", length=255)
+     */
+    private $slug;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Province", mappedBy="country")
+     */
+    protected $provinces;
 
 
     /**
@@ -49,7 +55,7 @@ class Account
      * Set name
      *
      * @param string $name
-     * @return Account
+     * @return Country
      */
     public function setName($name)
     {
@@ -68,27 +74,26 @@ class Account
         return $this->name;
     }
 
-
     /**
-     * Set city
+     * Set slug
      *
-     * @param \AppBundle\Entity\City $city
-     * @return Account
+     * @param string $slug
+     * @return Country
      */
-    public function setCity(\AppBundle\Entity\City $city = null)
+    public function setSlug($slug)
     {
-        $this->city = $city;
+        $this->slug = $slug;
 
         return $this;
     }
 
     /**
-     * Get city
+     * Get slug
      *
-     * @return \AppBundle\Entity\City 
+     * @return string 
      */
-    public function getCity()
+    public function getSlug()
     {
-        return $this->city;
+        return $this->slug;
     }
 }

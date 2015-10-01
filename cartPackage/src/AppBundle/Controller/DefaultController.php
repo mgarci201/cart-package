@@ -19,9 +19,13 @@ use Symfony\Component\Form\Extension\Core\ChoiceList\ChoiceListInterface;
 use Symfony\Component\Form\Extension\Core\ChoiceList\ChoiceList;
 use Symfony\Component\Form\FormBuilder;
 use Symfony\Component\Form\FormBuilderInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use AppBundle\Repository\PackageTypeRepository;
 use AppBundle\Entity\Account;
 use AppBundle\Form\Type\AccountType;
+use AppBundle\Model\Location;
+use AppBundle\Form\Type\LocationType;
+use AppBundle\Entity\City;
 ##use AppBundle\Form\CategoryPackageType;
 
 
@@ -258,6 +262,50 @@ class DefaultController extends Controller
     //     return $this->render(
     //         'default/create.html.twig', array('form' => $form->createView()));
     // }
+
+    /**
+     * Example select dependant
+     * @Route("/selectdependent", name="selectdependents")
+     */      
+    public function dependentSelectAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $cities = $em->getRepository('AppBundle:City')->findAll();
+
+        return array(
+            'cities' => $cities
+            );
+    }
+
+    /**
+     * Example new select dependant location
+     * @Route("/selectdependent/new", name="examples_dependent_selects_location_new")
+     *Template("default/location.html.twig")
+     */      
+    public function newLocationAction(Request $request)
+    {
+
+        $location = new Location();
+        $form = $this->createForm(new LocationType(), $location);
+
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $flashBag = $this->get('session')->getFlashBag();
+            $flashBag->add('success', 'Create Location: ');
+            $flashBag->add('success', sprintf('Address: %s', $location->address));
+            $flashBag->add('success', sprintf('City: %s', $location->city->getName()));
+
+            return $this->redirect($this->generateUrl('example_dependent_selects'));
+        }
+
+        return array(
+            'form' => $form->createView()
+            );
+
+    }    
+
+      
 
 
 }
