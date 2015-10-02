@@ -26,6 +26,7 @@ use AppBundle\Form\Type\AccountType;
 use AppBundle\Model\Location;
 use AppBundle\Form\Type\LocationType;
 use AppBundle\Entity\City;
+use AppBundle\Form\Type\Package_TypeType;
 ##use AppBundle\Form\CategoryPackageType;
 
 
@@ -82,6 +83,32 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
+        return $this->render('default/index.html.twig');
+    }    
+
+    /**
+     * @Route("/formpackage", name="formpackage")
+     */
+    public function formAction(Request $request)
+    {
+        $package_type = new Package_Type();
+
+        $form = $this->createForm(new Package_Type(), $package_type);
+
+        $form->handleRequest($request);
+
+        if($form->isValid())
+        {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($package_type);
+            $em->flush();
+
+            $session = $this->getRequest()->getSession();
+            $session->getFlashBag()->add('message', 'Package Choice Saved');
+
+        }
+
+
         return $this->render('default/index.html.twig');
     }
 
@@ -229,14 +256,16 @@ class DefaultController extends Controller
         //From should display related package
         if ($form->isSubmitted() && $form->isValid()) {
 
-           $package_type = $form->getData();
+            $package_type = $form->getData();
              //$em = $this->getDoctrine()->getManager();
              //$em->persist($package_type);
-             //$em->flush();   
-                
-            //exit(\Doctrine\Common\Util\Debug::dump($package_type));            
-            return $this->render('default/show.html.twig', array('id' => $package_type->getId()
-            ));
+             //$em->flush();    
+        
+        exit(\Doctrine\Common\Util\Debug::dump($package_type));     
+
+        // return $this->render('default/show.html.twig', array(
+        //     'package_type' => $package_type,
+        //     'form' => $form->createView()));
 
         } 
 
@@ -305,7 +334,6 @@ class DefaultController extends Controller
 
     }    
 
-      
 
 
 }

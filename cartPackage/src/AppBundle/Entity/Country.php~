@@ -96,4 +96,44 @@ class Country
     {
         return $this->slug;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->provinces = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add provinces
+     *
+     * @param \AppBundle\Entity\Province $provinces
+     * @return Country
+     */
+    public function addProvince(\AppBundle\Entity\Province $provinces)
+    {
+        $this->provinces[] = $provinces;
+
+        return $this;
+    }
+
+    /**
+     * Remove provinces
+     *
+     * @param \AppBundle\Entity\Province $provinces
+     */
+    public function removeProvince(\AppBundle\Entity\Province $provinces)
+    {
+        $this->provinces->removeElement($provinces);
+    }
+
+    /**
+     * Get provinces
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getProvinces()
+    {
+        return $this->provinces;
+    }
 }
