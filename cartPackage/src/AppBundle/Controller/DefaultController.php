@@ -27,6 +27,8 @@ use AppBundle\Model\Location;
 use AppBundle\Form\Type\LocationType;
 use AppBundle\Entity\City;
 use AppBundle\Form\Type\Package_TypeType;
+use AppBundle\Form\Type\TaskType;
+
 ##use AppBundle\Form\CategoryPackageType;
 
 
@@ -188,6 +190,28 @@ class DefaultController extends Controller
 
     }
 
+    /**
+     * Finds and displays a dropdown entity from package type.
+     * @Route("/formAction", name="formaction")
+     */
+     public function formTestAction ()
+     {
+        $task = new Task();
+        $form = $this->createForm(new TaskType(), $task);
+        
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($task);
+            $em->flush();
+
+        }
+
+        return $this->render('base.html.twig', array(
+            'form' => $form->createView(),
+            ));
+
+     }   
+
 
     /**
      * Finds and displays a dropdown entity from package type.
@@ -236,8 +260,8 @@ class DefaultController extends Controller
     public function exampleDropAction(Request $request)
     {
         $entity = new Package();
-        ##$package_type = $this->getDoctrine()->getRepository('AppBundle:Package_Type')
-        ##    ->findAssociatedPackageType();
+        // $package_type = $this->getDoctrine()->getRepository('AppBundle:Package_Type')
+        //     ->findAssociatedPackageType();
 
         $form = $this->createFormBuilder()
             ##->add('package')
@@ -256,19 +280,17 @@ class DefaultController extends Controller
         //From should display related package
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $package_type = $em->getRepository('')
-
-            //$package_type = $form->getData();
-             //$em = $this->getDoctrine()->getManager();
-             //$em->persist($package_type);
-             //$em->flush();    
+            $package_type = $form->getData();
+            // $em = $this->getDoctrine()->getManager();
+            // $em->persist($package_type);
+            // $em->flush();    
         
-        //exit(\Doctrine\Common\Util\Debug::dump($package_type));     
+        exit(\Doctrine\Common\Util\Debug::dump($package_type));     
 
         // return $this->render('default/show.html.twig', array(
         //     'package_type' => $package_type,
         //     'form' => $form->createView()));
-
+        return array('package_type' => $package_type);
         } 
 
         return $this->render('base.html.twig', array(

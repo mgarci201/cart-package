@@ -2,47 +2,93 @@
 
 namespace AppBundle\Entity;
 
-use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\ORM\Mapping as ORM;
 
-
+/**
+ * Task
+ *
+ * @ORM\Table()
+ * @ORM\Entity
+ */
 class Task
 {
-	/**
-	* @Assert\Type(type="AppBundle\Entity\Category")
-	* @Assert\Valid()
-	*/
-	protected $category;
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
 
-	protected $task;
-	protected $dueDate;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="task", type="string", length=255)
+     */
+    private $task;
 
-	public function getTask()
-	{
-		return $this->task;
-	}
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="dueDate", type="string", length=255)
+     */
+    private $dueDate;
 
-	public function setTask($task)
-	{
-		$this->task = $task;
-	}
 
-	public function getDueDate()
-	{
-		return $this->dueDate;
-	}
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
-	public function setDueDate(\DateTime $dueDate = null)
-	{
-		$this->dueDate = $dueDate;
-	}
+    /**
+     * Set task
+     *
+     * @param string $task
+     * @return Task
+     */
+    public function setTask($task)
+    {
+        $this->task = $task;
 
-	public function getCategory()
-	{
-		return $this->category;
-	}
+        return $this;
+    }
 
-	public function setCategory(Category $category = null)
-	{
-		$this->category = $category;
-	}
+    /**
+     * Get task
+     *
+     * @return string 
+     */
+    public function getTask()
+    {
+        return $this->task;
+    }
+
+    /**
+     * Set dueDate
+     *
+     * @param string $dueDate
+     * @return Task
+     */
+    public function setDueDate($dueDate)
+    {
+        $this->dueDate = $dueDate;
+
+        return $this;
+    }
+
+    /**
+     * Get dueDate
+     *
+     * @return string 
+     */
+    public function getDueDate()
+    {
+        return $this->dueDate;
+    }
 }

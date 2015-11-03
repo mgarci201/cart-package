@@ -1,0 +1,522 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><title>
+	Love The Dogs
+</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
+
+<!-- Font -->
+<link rel="stylesheet" type="text/css" href="../../templates/include/css/MyFontsWebfontsOrderM2650630.css" />
+
+<!-- jQuery -->
+<script src="../../templates/include/js/jquery-1.7.min.js" type="text/javascript">
+
+</script>
+<!-- jQuery UI -->
+<script src="../../templates/include/js/jquery-ui-1.8.16.min.js" type="text/javascript">
+
+</script><link id="Link1" href="../../templates/include/css/jquery-ui-1.8.16.custom.css" rel="stylesheet" type="text/css" />
+<!-- Combobox Styled --><script src="../../templates/include/js/jquery.combobox.js" type="text/javascript">
+
+</script>
+
+<!-- Pretty Photo -->
+<link href="../../templates/include/css/prettyPhoto.css" rel="stylesheet" type="text/css" />
+<script src="../../templates/include/js/jquery.prettyPhoto.js" type="text/javascript"> 
+
+</script>
+<!-- Cycle --><script src="../../templates/include/js/jquery.cycle.all.min.js" type="text/javascript">
+
+</script>
+<!-- Watermark --><script src="../../templates/include/js/jquery.watermark.min.js" type="text/javascript">
+
+</script>
+<!-- Masked Input --><script src="../../templates/include/js/jquery.maskedinput-1.3.min.js" type="text/javascript">
+
+</script>
+
+<!-- Main Style -->
+<link id="Link2" href="../../templates/include/css/main.css?v=2.0.4" rel="stylesheet" type="text/css" />
+
+<script src="../../templates/include/js/event-tracking.js" type="text/javascript">
+
+</script>
+<link rel="shortcut icon" href="http://www.lovethedogs.co.uk/favicon.ico" type="image/vnd.microsoft.icon" /><link rel="icon" href="favicon.ico" type="image/vnd.microsoft.icon" /><meta property="og:image" content="http://www.lovethedogs.co.uk/images/love-the-dogs-logo-white.png" /><meta name="description" content="Come greyhound racing at Belle Vue Stadium, Manchester. Get a great night out at the Dogs with options to dine, enjoy a great value package trackside or entertain and party in our Suites!" />
+
+<script src='../../templates/include/js/customSelect.min.js'  type='text/javascript'></script>
+
+<style>
+.tooltip {outline:none; display: inline;}
+a.tooltip strong {line-height:30px;}
+a.tooltip:hover {text-decoration:none;} 
+a.tooltip span {
+	z-index:10;display:none; padding:14px 20px;
+	margin-top:-30px; margin-left:28px;
+	width:300px; line-height:16px;
+}
+a.tooltip:hover span{
+	display:inline; position:absolute; color:#111;
+	border:1px solid #DCA; background:#fffAF0;}
+	.callout {z-index:20;position:absolute;top:30px;border:0;left:-12px;}
+	
+	/*CSS3 extras*/
+	a.tooltip span
+	{
+		border-radius:4px;
+		box-shadow: 5px 5px 8px #CCC;
+	}
+	
+	.left					{ float:left !important; }
+	.right					{ float:right !important; }
+
+	.hide                   { display: none !important; }
+	
+	#basket_totals 			{width: 405px; margin-left: 275px;}
+	#basket_totals tr td		{border-bottom: 1px solid #fff; padding-top: 6px; padding-bottom: 6px;}
+	#basket_totals tr td strong
+	{font-size: 14px;}
+	#basket_totals tr td.alignright
+	{padding-right: 10px;}
+	
+	
+	input.sems-button, a.sems-button {
+		font-size: 12px;
+		padding: 8px 10px;
+		border-style:none;
+	}
+
+	input.sems-button {
+		/*float: left;*/
+		padding: 0;
+		height: 40px;
+		line-height: 40px;
+		width: 92px;
+		/*font-family: 'Merriweather Sans', sans-serif;*/
+	}
+	input.sems-button, a.sems-button {
+		color: #fff;
+		text-transform: uppercase;
+		font-weight: 400;
+		letter-spacing: 1px;
+		font-size: 14px;
+		/*padding: 12px 20px;*/
+		margin: 0;
+		/*background: none repeat scroll 0 0 #dd9ba5; */ /* Old browsers */
+		/*font-family: 'Merriweather Sans', sans-serif;*/
+		background: #a8956d;
+		
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		-ms-box-sizing: border-box;
+		box-sizing: border-box;
+		border: 3px solid rgba(0,0,0,0);
+	}
+
+	input.sems-button:hover {
+		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+		opacity: 0.8;
+	}
+
+	.basket table {
+		padding: 5px;
+		margin: 20px 0 0 0;
+		border-bottom: 1px solid #dddddd;
+	}
+
+	.basket table th, .history table th {
+		/*font-family: 'Merriweather Sans', sans-serif;*/
+		text-align: left;
+		background: #006b8c;
+		color: #fff;
+		font-weight: 300;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		padding: 15px;
+		border-right: 1px solid white;
+		font-size: 12px;
+	}
+
+	.basket table th:nth-child(6),.basket table th:nth-child(7) {
+		border-right:0;
+	}
+
+	.basket table td {
+		padding: 20px 13px;
+		font-size: 15px;
+	}
+
+	.basket table td.edit a {
+		color:#0969ac;
+	}
+
+	#basket_totals {
+		background: #eeeeee;
+		position: relative;
+		left: 330px;
+		margin: 0;
+		width: 350px;
+	}
+
+	.basket #basket_totals td {
+		padding: 10px 13px;
+	}
+
+	.promo-table {
+		background: #eeeeee;
+		margin-bottom: 30px !important;
+	}
+
+	/*ul, ol 						{ margin-bottom: 18px; } */
+	ul.inline-list 				{ margin-bottom: 0; }
+	ul.inline-list li 			{ display:block; float:left; }
+	
+	.form-sign-up-buttons 				{width: 100%; height: 36px;}
+	.form-sign-up-buttons .cancel 	{float: left; background: #4d4d4d; box-shadow: 0 2px 0 0 #333;}
+	.form-sign-up-buttons .cancel:hover 
+	{background: #333;}
+	.form-sign-up-buttons .create 	{float: right;}
+
+	.section_tickets form {
+		display: inline;
+		float: left;
+		width: 100%;
+		margin-bottom: 20px;
+	}
+
+	.section_tickets form h5 {
+		margin-top: -15px;
+	}
+
+	.section_tickets .textbox label {
+		width: 110px;
+		display: block;
+		float: left;
+	}		
+
+	.section_tickets .forgot {
+		color:#a39161;
+	}
+	
+	.alert {
+    color: red;
+	}
+
+	.section_tickets form ol li {
+		/* clear: left; */
+		
+		float: left;
+		
+		width: 100%;
+	}
+
+	.section_tickets form ul li {
+		/* clear: left; */
+		
+		float: left;
+		
+		width: 100%;
+	}
+
+
+	#login_form li input, #password_form li input {
+		height: 30px;
+		padding: 0 10px;
+		line-height: 30px;
+		background: none;
+		border: 1px solid #b2b2b2;
+		width: 278px;
+	}
+
+	#login_form li {
+		/*height: 30px; */
+		line-height: 30px;
+	}
+
+	#login_form li label, #password_form li label{
+		width: 180px;
+		display: block;
+		float: left;	
+	}
+
+	#login_form li input.sems-button, #password_form li input.sems-button {
+		font-size: 12px;
+		padding: 8px 10px;
+		border-style:none;
+		/*float: left;*/
+		padding: 0;
+		height: 40px;
+		line-height: 40px;
+		width: 92px;
+		/*font-family: 'Merriweather Sans', sans-serif;*/
+		color: #fff;
+		text-transform: uppercase;
+		font-weight: 400;
+		letter-spacing: 1px;
+		font-size: 14px;
+		/*padding: 12px 20px;*/
+		margin: 0;
+		/*background: none repeat scroll 0 0 #dd9ba5; */ /* Old browsers */
+		/*font-family: 'Merriweather Sans', sans-serif;*/
+		background: #a8956d;
+		
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		-ms-box-sizing: border-box;
+		box-sizing: border-box;
+		border: 3px solid rgba(0,0,0,0);
+	}
+
+	ul {
+		list-style-type: none;
+	}
+	
+	div {
+		display: block;
+	}
+
+	div .content
+	{
+		width:95%;
+	}
+
+	</style>
+	
+	
+
+</head>
+<body class="section_tickets">
+	
+	<div id="panBasePanel">
+		
+		<div id="page-container" class="page-width">
+			<div id="background-left-element"></div>
+			<div id="background-right-element"></div>    
+			<div id="page" class="page-width">
+				<div id="page-content">
+
+					<div id="top-menu" class="clearfix">
+						<ul class="nav">
+							
+							
+							
+							<li class="current first" pageref="284"><a class="current first" href="http://www.lovethedogs.co.uk/bellevue">Home</a></li><li class="" pageref="543"><a class="" href="http://www.lovethedogs.co.uk/bellevue/restaurant.aspx">Restaurant</a><ul class="subNav">
+							<li class="first" pageref="541"><a class="first" href="http://www.lovethedogs.co.uk/bellevue/restaurant.aspx?i=541">Packages</a></li><li class="" pageref="542"><a class="" href="http://www.lovethedogs.co.uk/bellevue/restaurant-menu.aspx">Menu</a></li>
+						</ul></li><li class="" pageref="308"><a class="" href="http://www.lovethedogs.co.uk/bellevue/the-suites.aspx">Private Rooms</a><ul class="subNav">
+						<li class="first" pageref="329"><a class="first" href="http://www.lovethedogs.co.uk/bellevue/suite-menu.aspx">Menus</a></li>
+					</ul></li><li class="" pageref="287"><a class="" href="http://www.lovethedogs.co.uk/bellevue/trackside.aspx">Trackside</a><ul class="subNav">
+					<li class="first" pageref="340"><a class="first" href="http://www.lovethedogs.co.uk/bellevue/trackside.aspx?i=340">Packages</a></li><li class="" pageref="341"><a class="" href="http://www.lovethedogs.co.uk/bellevue/trackside.aspx?i=341">The 6pack</a></li>
+				</ul></li><li class="" pageref="285"><a class="" href="http://www.lovethedogs.co.uk/bellevue/party-packages.aspx">Party Packages</a><ul class="subNav">
+				<li class="first" pageref="334"><a class="first" href="http://www.lovethedogs.co.uk/bellevue/party-packages.aspx?i=334">Party at the Dogs</a></li><li class="" pageref="493"><a class="" href="http://www.lovethedogs.co.uk/bellevue/party-packages.aspx?i=493">Stag and Hen</a></li>
+			</ul></li><li class="" pageref="288"><a class="" href="http://www.lovethedogs.co.uk/bellevue/bv-corp.aspx">Corporate</a><ul class="subNav">
+			<li class="first" pageref="534"><a class="first" href="http://www.lovethedogs.co.uk/bellevue/testimonials.aspx">Testimonials</a></li>
+		</ul></li><li class="" pageref="289"><a class="" href="http://www.lovethedogs.co.uk/bellevue/stadium-info.aspx">Contact Us</a><ul class="subNav">
+		<li class="first" pageref="347"><a class="first" href="http://www.lovethedogs.co.uk/bellevue/bv-directions.aspx">Directions</a></li><li class="" pageref="491"><a class="" href="http://www.lovethedogs.co.uk/bellevue/stadium-info.aspx?i=491">Race Meetings</a></li><li class="" pageref="349"><a class="" href="http://www.lovethedogs.co.uk/bellevue/owners.aspx">Owners Page</a></li><li class="" pageref="350"><a class="" href="http://www.lovethedogs.co.uk/bellevue/bv-partners.aspx">Our Partners</a></li><li class="" pageref="488"><a class="" href="http://www.lovethedogs.co.uk/bellevue/stadium-info.aspx?i=488">FAQ's</a></li>
+	</ul></li>
+	
+	
+	
+	
+
+
+
+
+
+</ul>
+</div>                    	
+
+<div id="header" class="clearfix">
+	<a class="main-logo" href="#"><img src="../../templates/include/images/love-the-dogs-logo-white.png" alt="Love the dogs - logo" style="float: left; margin: 5px 0;" /></a>
+	<div class="track-details">
+		<div class="stadium-name">Belle Vue (Manchester)</div>
+		<div>Greyhound Stadium</div>
+		<div>&nbsp;</div>
+		<div>Contact: <span class="highlight"><a id="litTrackPhone" href="tel:"></a></span></div>
+	</div>
+	<div><img src="../../templates/include/images/great_night_out.jpg" style="float: right; margin: 5px 0;"></div>                            
+</div>
+
+
+<div id="banner-container" class="rotate-prev-next" pager="#pager">
+	
+	<a class="banner">
+		<div class="banner" style="background-image:url(../../templates/include/images/BVGenericContactUsWebBanners1.jpg);cursor:pointer;">
+			<div class="bannerText"></div>
+		</div></a>
+	</div>
+	<div id="banner-nav" style="float: right; height:20px;padding-top:7px;color:white;">
+		<div id="pager" style="text-align:right;"></div>		
+	</div>	
+
+	<div id="breadcrumb">
+		<ul class="nav">
+			<!-- <li class="first" pageref="351"><a class="first" href="/perrybarr/thingstodoinbirmingham.aspx">Home</a></li><span class="highlight">&gt;</span><li class="current" pageref="354"><a class="current" href="/perrybarr/boys-night-out-deals.aspx">Trackside</a></li>  -->
+		</ul>
+	</div>	
+	
+	<div id="inner-content" class="clearfix">
+		<div id="inner-sidebar">
+			<div class="nav-sidebar">
+				<ul class="nav">
+					<!-- <li class="current parent" pageref="289"><a class="current parent" href="/perrybarr/stadium-info.aspx">Contact Us</a></li><li class="current" pageref="347"><a class="current" href="/perrybarr/bv-directions.aspx">Directions</a></li><li class="" pageref="491"><a class="" href="/perrybarr/stadium-info.aspx?i=491">Race Meetings</a></li><li class="" pageref="349"><a class="" href="/perrybarr/owners.aspx">Owners Page</a></li><li class="" pageref="350"><a class="" href="/perrybarr/bv-partners.aspx">Our Partners</a></li><li class="" pageref="488"><a class="" href="/perrybarr/stadium-info.aspx?i=488">FAQ's</a></li>  -->
+
+					<!-- <li id="fixtures"><a href="">Fixtures</a></li>
+					<li id="tickets"><a href="http://217.22.158.121:80/mi-eventmaster/html/em/website/cart.pl?myaction=choose_package&event_id=9999000000734313&filter=&action_session=387068">Packages</a></li>
+					
+					<li id="login"><a href="/mi-eventmaster/html/em/website/cart.pl?myaction=login&amp;action_session=387068&amp;starturl=http%3A%2F%2F217.22.158.121%3A80%2Fmi-eventmaster%2Fhtml%2Fem%2Fwebsite%2Fcart.pl%3Fmyaction%3Dsummary%26action_session%3D387068&amp;location_id=1000">Account Login</a></li>
+					
+					
+						-->
+
+				</ul>
+			</div>
+
+			<div class="widget simple-banner">
+				<div class="text">
+					<p style="text-align: center;">&nbsp;</p>
+					<p style="text-align: center;"><img width="280" height="280" alt="" src="../../templates/include/images/step2.jpg"></p>
+				</div>
+			</div>
+
+		</div>
+		<div class="inner-main">
+			<div id="inner-page-content">
+				
+				
+				<div id="cms-content" class="clearfix">
+					
+				</div><!-- .left200 -->
+
+				<div class="right730" style="position: relative;">
+					
+					
+	
+
+					<div class="content">
+						<div id="register-box" class="content clearfix">	
+						
+						<h2>Checkout Now</h2>						
+						<p>Just enter a few details on the next page to complete your booking, you'll be able to complete your reservation quickly and securely and we will confirm your booking by email directly to you.</p>
+						<p>Then you can relax and get set for a great night out! </p>
+						
+
+						<input class="sems-button right" style="width:140px;" type="button" onclick="document.location.href='cart.pl?myaction=create_account&action_session=387068&starturl=http%3A%2F%2F217.22.158.121%3A80%2Fmi-eventmaster%2Fhtml%2Fem%2Fwebsite%2Fcart.pl%3Fmyaction%3Dsummary%26action_session%3D387068'" value=" Book Now " />
+						
+					</div>	
+						
+				
+
+						
+						
+						<br/>
+						<div class="heading clearfix">
+						<h2>Account Login</h2>
+						</div>
+						<p>If you have previously booked with us and chose to create an account, please log in now to make your checkout experience a quick one.</p><br/>
+						
+						<form id="login_form" name="login_form" method="POST" action="/mi-eventmaster/html/em/website/cart.pl" class="clearfix">
+							<input type="hidden" name="myaction" value="login"/>
+							<input type="hidden" name="starturl" value="http%3A%2F%2F217.22.158.121%3A80%2Fmi-eventmaster%2Fhtml%2Fem%2Fwebsite%2Fcart.pl%3Fmyaction%3Dsummary%26action_session%3D387068"/>
+							<input type="hidden" name="action_session" value="387068"/>
+							<input type="hidden" name="refresh" value="0"/>
+							<input type="hidden" name="form_submit" value="true"/>
+							<input type="hidden" name="crypt" value=""/>
+							
+							
+							
+							<h3>Enter your details</h3>
+							
+							<ul>
+								<li class="textbox">
+									<label for="username">Email Address:&nbsp;&nbsp;</label>
+									<input name="username" type="text" value="" id="username" class="sems_text" />
+								</li>
+								<li>&nbsp;</li>
+								<li class="textbox border">
+									<label for="password">Password:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+									<input name="password" type="password" value="" id="password" class="sems_text password left" />
+								</li>
+								<li>&nbsp;</li>
+								<li>
+									<div class="form-sign-up-buttons">
+										<input class="sems-button right" type="submit" border="0" value="Login" />
+										<a href="/mi-eventmaster/html/em/website/cart.pl?myaction=reminder&action_session=387068" class="forgot left">Forgotten Password ?</a>							
+									</div>
+								</li>
+							</ul>
+							
+						</form>
+						
+						
+						
+						
+					</div>
+					
+					
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	
+	<div style="clear:both;"></div>
+
+	     <div id="social-images">
+                            <a id="lnkFacebook" AlternateText="Find us on facebook" href="https://www.facebook.com/bellevuedogs" target="_blank"><img src="../../templates/include/images/facebook.gif" alt="" /></a>
+                            <a id="lnkTwitter" AlternateText="Find us on twitter" href="https://twitter.com/bellevuedogs" target="_blank"><img src="../../templates/include/images/twitter.gif" alt="" /></a>
+                            
+                        </div>
+                    </div>
+                </div>       
+            </div>
+   
+
+
+ <div id="footer-menu" class="page-width clearfix" >
+                <ul class="nav">
+		<li class="first" pageref="325"><a class="first" href="http://www.lovethedogs.co.uk/bellevue/booking.aspx">Booking Information</a>
+			<ul class="subNav">
+			<li class="first" pageref="305"><a class="first" href="http://www.lovethedogs.co.uk/bellevue/booking.aspx?i=305">
+		Online Bookings</a></li><li class="" pageref="306"><a class="" href="http://www.lovethedogs.co.uk/bellevue/telephone-bookings.aspx">
+		Telephone Bookings</a></li>
+		</ul></li>
+
+		<li class="" pageref="309"><a class="" href="http://www.lovethedogs.co.uk/bellevue/stadium-info.aspx">Contact us</a><ul class="subNav">
+			<li class="first" pageref="310"><a class="first" href="http://www.lovethedogs.co.uk/bellevue/stadium-info.aspx?i=491">Race days and Times</a></li><li class="" pageref="311"><a class="" href="http://www.lovethedogs.co.uk/bellevue/stadium-info.aspx?i=491">General Admission Prices</a></li><li class="" pageref="312"><a class="" href="http://www.lovethedogs.co.uk/bellevue/bv-directions.aspx">How to find us</a></li>
+		</ul></li>
+
+		<li class="" pageref="292"><a class="" href="http://www.lovethedogs.co.uk/bellevue/useful-information.aspx">Useful Information</a><ul class="subNav">
+			<li class="first" pageref="319"><a class="first" href="http://www.lovethedogs.co.uk/bellevue/track-offers.aspx?i=552">How to Bet</a></li><li class="" pageref="313"><a class="" href="http://www.lovethedogs.co.uk/bellevue/welfare.aspx">Welfare & Retired Greyhounds</a></li><li class="" pageref="314"><a class="" href="http://www.lovethedogs.co.uk/bellevue/charities.aspx">Charities & Fund Raising</a></li><li class="" pageref="316"><a class="" href="http://www.lovethedogs.co.uk/bellevue/racecards-and-results.aspx">Race cards and results</a></li><li class="" pageref="317"><a class="" href="http://www.lovethedogs.co.uk/bellevue/race-sponsorship.aspx">Race Sponsorship</a></li>
+		</ul></li>
+
+		<li class="" pageref="295"><a class="" href="http://www.lovethedogs.co.uk/bellevue/statutory-information.aspx">Statutory Information</a><ul class="subNav">
+			<li class="first" pageref="320"><a class="first" href="http://www.lovethedogs.co.uk/bellevue/responsible-gambling.aspx">Responsible Gambling</a></li><li class="" pageref="321"><a class="" href="http://www.lovethedogs.co.uk/bellevue/booking-terms.aspx">Booking terms & conditions</a></li><li class="" pageref="322"><a class="" href="http://www.lovethedogs.co.uk/bellevue/terms-of-service.aspx">Terms of service</a></li><li class="" pageref="323"><a class="" href="http://www.lovethedogs.co.uk/bellevue/statutory-information.aspx?i=323">Privacy Policy</a></li>
+		</ul></li>
+
+		<li class pageref="0"><a class href="/track-selector.aspx">Other Stadiums</a><ul class="subNav">
+				<li class="first" pageref="0"><a class="first" href="http://www.lovethedogs.co.uk/bellevue">Manchester, Belle Vue</a></li>
+				<li class pageref="0"><a class href="http://www.lovethedogs.co.uk/">Birmingham, Hall Green</a></li>
+				<li class pageref="0"><a class href="http://www.lovethedogs.co.uk/">Birmingham, Perry Barr</a></li>
+				<li class pageref="0"><a class href="http://www.lovethedogs.co.uk/">London, Wimbledon</a></li>
+		</ul></li>
+	</ul>
+            </div>
+	
+</div>
+
+
+<!-- CrazyEgg code -->
+<script type="text/javascript">
+setTimeout(function(){var a=document.createElement("script");
+	var b=document.getElementsByTagName("script")[0];
+	a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0014/2897.js?"+Math.floor(new Date().getTime()/3600000);
+	a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+</script>
+<!-- End CrazyEgg code -->
+
+</body>
+</html>
+
+
+<!-- 1000  -->
