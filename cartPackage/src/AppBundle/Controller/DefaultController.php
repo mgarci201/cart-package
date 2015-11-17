@@ -212,7 +212,6 @@ class DefaultController extends Controller
 
      }   
 
-
     /**
      * Finds and displays a dropdown entity from package type.
      * @Route("/dropdowntest", name="dropdowntest")
@@ -220,7 +219,7 @@ class DefaultController extends Controller
     public function dropdownAction(Request $request)
     {
         $task = new Task();
-        $task->getCategory();
+        //$task->getCategory();
         $task->setTask('Write a test');
         $task->setDueDate(new \DateTime('tomorrow'));
 
@@ -259,16 +258,16 @@ class DefaultController extends Controller
      */
     public function exampleDropAction(Request $request)
     {
-        $entity = new Package();
+        //$entity = new Package();
         // $package_type = $this->getDoctrine()->getRepository('AppBundle:Package_Type')
         //     ->findAssociatedPackageType();
 
         $form = $this->createFormBuilder()
-            ##->add('package')
+            #->add('package')
             ->add('packagetype', 'entity', array(
                 'empty_value' => '-Select Package Type-',
                 'class' => 'AppBundle:Package_Type',
-                'choice_label' => 'packageNameType',
+                'choice_label' => 'getPackageNameType',
                 'property' => 'package',
                 ))
 
@@ -283,18 +282,16 @@ class DefaultController extends Controller
             $package_type = $form->getData();
             // $em = $this->getDoctrine()->getManager();
             // $em->persist($package_type);
-            // $em->flush();    
+            // $em->flush();       
         
         exit(\Doctrine\Common\Util\Debug::dump($package_type));     
 
         // return $this->render('default/show.html.twig', array(
         //     'package_type' => $package_type,
         //     'form' => $form->createView()));
-        return array('package_type' => $package_type);
         } 
 
         return $this->render('base.html.twig', array(
-            'entity' => $entity,
             'form' => $form->createView(),
             ));
     }
