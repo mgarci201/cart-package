@@ -35,50 +35,21 @@ use AppBundle\Form\Type\TaskType;
 
 class DefaultController extends Controller
 {
-    public function ajaxAction(Request $request)
+    /**
+     * @Route("/admin")
+     */    
+    public function adminAction()
     {
-        if (! $request->isXmlHttpRequest()) {
-            throw new NotFoundHttpException();
-        }
-
-        //get Province ID 
-        $id = $request->query->get('province_id');
-
-        $result = array();
-
-        // Return list of cities, based on the selected province
-        $repo = $this->getDoctrine()->getManager()->getRepository('AppBundle:City');
-        $cities = $repo->findByProvince($id, array('name' => 'asc'));
-        foreach ($cities as $city) {
-            $result[$city->getName()] = $city->getId();
-        }
-
-        return new JsonResponse($result);
+        return new Response('<html><body>Admin Page!</body></html>');
     }
 
     /**
-     * Example form with no class.
-     * @Route("/bindtest", name="bindtest")
+     * @Route("/guest")
      */    
-    public function createAction(Request $request)
+    public function guestAction()
     {
-        $account = new Account();
-
-        //use service and inject automatically
-        $form = $this->createForm(new AccountType($this->getDoctrine()->getManager()), $account);
-
-        $form->handleRequest($request);
-
-        if($form->isValid())
-        {
-
-            $this->getDoctrine()->getManager()->persist($account);
-            $this->getDoctrine()->getManager()->flush();
-        }
-
-        return $this->render('default/index2.html.twig', array('form' => $form->createView()));
-
-    }
+        return new Response('<html><body>This page is for guests! Testing 1 2...</body></html>');
+    }    
 
     /**
      * @Route("/app/example", name="homepage")
