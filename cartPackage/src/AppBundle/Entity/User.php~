@@ -3,6 +3,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
@@ -10,8 +12,10 @@ use Symfony\Component\Security\Core\User\UserInterface;
  *
  * @ORM\Table()
  * @ORM\Entity
+ * @UniqueEntity(fields="email", message="Email already taken")
+ * @UniqueEntity(fields="username", message="Username already taken")
  */
-class User
+class User implements UserInterface
 {
     /**
      * @var integer
@@ -24,31 +28,31 @@ class User
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="username", type="string", length=255, unique=true)
+     * @Assert\NotBlank()
+     * @Assert\Email()
+     * @ORM\Column(name="email", type="string", length=255)
+     */
+    private $email;
+
+    /**
+     * @var string
+     * @Assert\NotBlank()
+     * @ORM\Column(name="username", type="string", length=255)
      */
     private $username;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="password", type="string", length=64)
+     * @ORM\Column(type="string", length=64)
      */
     private $password;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="email", type="string", length=255, unique=true)
+     * @Assert\NotBlank()
+     * @Assert\Length(max = 4096)
      */
-    private $email;
-
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="isActive", type="boolean")
-     */
-    private $isActive;
+    private $plainPassword;
 
 
     /**
@@ -59,6 +63,29 @@ class User
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     * @return User
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string 
+     */
+    public function getEmail()
+    {
+        return $this->email;
     }
 
     /**
@@ -108,49 +135,26 @@ class User
     }
 
     /**
-     * Set email
+     * Set plainPassword
      *
-     * @param string $email
+     * @param string $plainPassword
      * @return User
      */
-    public function setEmail($email)
+    public function setPlainPassword($plainPassword)
     {
-        $this->email = $email;
+        $this->plainPassword = $plainPassword;
 
         return $this;
     }
 
     /**
-     * Get email
+     * Get plainPassword
      *
      * @return string 
      */
-    public function getEmail()
+    public function getPlainPassword()
     {
-        return $this->email;
-    }
-
-    /**
-     * Set isActive
-     *
-     * @param boolean $isActive
-     * @return User
-     */
-    public function setIsActive($isActive)
-    {
-        $this->isActive = $isActive;
-
-        return $this;
-    }
-
-    /**
-     * Get isActive
-     *
-     * @return boolean 
-     */
-    public function getIsActive()
-    {
-        return $this->isActive;
+        return $this->plainPassword;
     }
 
     public function getSalt()
@@ -165,26 +169,6 @@ class User
 
     public function eraseCredentials()
     {
-    }
-
-    /** @see \Serializable::serialize() */
-    public function serialize()
-    {
-        return serialize(array(
-            $this->id,
-            $this->username,
-            $this->password,
-            ));
-    }
-
-    /** @see \Serializable::unserialize() */
-    public function unserialize($serialized)
-    {
-        list (
-            $this->id,
-            $this->username,
-            $this->password,
-            ) = unserialize($serialized);
     }
 
 }
