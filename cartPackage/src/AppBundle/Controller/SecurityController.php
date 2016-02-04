@@ -42,6 +42,8 @@ class SecurityController extends Controller
 	*/
 	public function loginCheckAction()
 	{
+		// Not executed,
+		//Route is handled by the Security System Symfny2
 	}
 
 	/**
