@@ -13,9 +13,6 @@ security:
           class: AppBundle:User
           property: username
 
-        #in_memory:
-        #    memory:
-        #     users: ~
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
         dev:
@@ -28,6 +25,6 @@ security:
             provider: our_db_provider
             anonymous: ~
 
-        # form_login:
+    # form_login:
         #     login_path:  /login
         #     check_path:  /login_check

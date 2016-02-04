@@ -44,7 +44,6 @@ class SecurityController extends Controller
 	{
 		// Not executed,
 		//Route is handled by the Security System Symfny2
-		return new Response('<p>Logged In!</p>');
 	}
 
 	/**
