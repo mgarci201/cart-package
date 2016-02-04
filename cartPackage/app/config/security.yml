@@ -29,5 +29,5 @@ security:
             anonymous: ~
 
         # form_login:
-        #       login_path:  /login
-        #       check_path:  /login_check
+        #     login_path:  /login
+        #     check_path:  /login_check
