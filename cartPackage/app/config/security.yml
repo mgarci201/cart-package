@@ -24,7 +24,6 @@ security:
             http_basic: ~
             provider: our_db_provider
             anonymous: ~
-
     # form_login:
         #     login_path:  /login
         #     check_path:  /login_check
