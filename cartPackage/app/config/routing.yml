@@ -36,3 +36,6 @@ package_delete:
     path:     /{id}/delete
     defaults: { _controller: "AppBundle:Package:delete" }
     requirements: { _method: post|delete }
+
+logout:
+    path: /logout

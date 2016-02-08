@@ -2,6 +2,11 @@
 
 {% block body %}
     <div class="container">
+
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+    	<p>Hello {{ app.user.username }}</p><a href="{{ path('user_logout') }}">Logout</a>
+    {% endif %}
+
     <h1>My Cart</h1>
 
 	<form class="form-inline" style="float: left;">
@@ -43,7 +48,6 @@
             	<td>&pound;{{ entity.cost }}</td>
             	<td align="center"><input type="number" min="0" max="999" size="2"></td>
             </tr>
-
             <tr>
                 <td>Test 1</td>
                 <td>Test 1</td>

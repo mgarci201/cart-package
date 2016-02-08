@@ -2,6 +2,11 @@
 
 {% block body -%}
 <div class="container">
+
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <p>Hello {{ app.user.username }}</p>
+    {% endif %}
+
     <h1>Package</h1>
 
     <table class="record_properties">

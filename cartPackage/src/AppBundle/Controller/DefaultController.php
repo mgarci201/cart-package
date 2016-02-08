@@ -28,6 +28,7 @@ use AppBundle\Form\Type\LocationType;
 use AppBundle\Entity\City;
 use AppBundle\Form\Type\Package_TypeType;
 use AppBundle\Form\Type\TaskType;
+use AppBundle\Entity\User;
 
 ##use AppBundle\Form\CategoryPackageType;
 
@@ -40,7 +41,13 @@ class DefaultController extends Controller
      */    
     public function adminAction()
     {
-        return new Response('<html><body>Admin Page!</body></html>');
+        if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            throw $this->createAccessDeniedException();
+        }
+
+        $user = $this->getUser();
+
+        return new Response('Hello User '.$user->getUsername());
     }
 
     /**
@@ -56,32 +63,6 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('default/index.html.twig');
-    }    
-
-    /**
-     * @Route("/formpackage", name="formpackage")
-     */
-    public function formAction(Request $request)
-    {
-        $package_type = new Package_Type();
-
-        $form = $this->createForm(new Package_Type(), $package_type);
-
-        $form->handleRequest($request);
-
-        if($form->isValid())
-        {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($package_type);
-            $em->flush();
-
-            $session = $this->getRequest()->getSession();
-            $session->getFlashBag()->add('message', 'Package Choice Saved');
-
-        }
-
-
         return $this->render('default/index.html.twig');
     }
 

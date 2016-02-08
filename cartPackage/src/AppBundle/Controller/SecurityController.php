@@ -76,6 +76,6 @@ class SecurityController extends Controller
 			'security/register.html.twig',
 			array('form' => $form->createView())
 		);
-	}	
+	}
 
 }

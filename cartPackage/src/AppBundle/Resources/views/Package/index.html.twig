@@ -2,6 +2,11 @@
 
 {% block body -%}
 <div class="container">
+
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <p>Hello {{ app.user.username }}</p><a href="{{ path('logout') }}">Logout</a>
+    {% endif %}
+
     <h1>Main Package(s)</h1>
     <p></p>
 
