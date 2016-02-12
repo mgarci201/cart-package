@@ -36,6 +36,12 @@ class User implements UserInterface
 
     /**
      * @var string
+     * @ORM\Column(type="string", length=255)
+     */
+    private $firstname;
+
+    /**
+     * @var string
      * @Assert\NotBlank()
      * @ORM\Column(name="username", type="string", length=255)
      */
@@ -171,4 +177,27 @@ class User implements UserInterface
     {
     }
 
+
+    /**
+     * Set firstname
+     *
+     * @param string $firstname
+     * @return User
+     */
+    public function setFirstname($firstname)
+    {
+        $this->firstname = $firstname;
+
+        return $this;
+    }
+
+    /**
+     * Get firstname
+     *
+     * @return string 
+     */
+    public function getFirstname()
+    {
+        return $this->firstname;
+    }
 }

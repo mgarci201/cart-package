@@ -4,7 +4,7 @@
     <div class="container">
 
     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-    	<p>Hello {{ app.user.username }}</p><a href="{{ path('logout') }}">Logout</a>
+    	<p>Hello {{ app.user.firstname }}</p><a href="{{ path('logout') }}">Logout</a>
     {% endif %}
 
     <h1>My Cart</h1>
