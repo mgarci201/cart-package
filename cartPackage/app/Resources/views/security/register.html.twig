@@ -1,6 +1,13 @@
 {# app/Resources/views/security/register.html.twig #}
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+<div class="container">
+	<h1>Register Details</h1>
 
 {{ form_start(form) }}
+
 	{{ form_row(form.username) }}
 	{{ form_row(form.email) }}
 	{{ form_row(form.firstname) }}
@@ -9,3 +16,6 @@
 
 	<button type="submit">Register</button>
 {{ form_end(form) }}
+</div>
+
+{% endblock %}
