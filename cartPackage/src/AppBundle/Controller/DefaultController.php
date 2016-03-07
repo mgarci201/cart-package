@@ -305,9 +305,15 @@ class DefaultController extends Controller
             'form' => $form->createView()
             );
 
-    }    
+    }
 
-
+    /**
+     * @Route("/selectdependent/new", name="examples_dependent_selects_location_new")
+     *Template("default/selectpackagetype.html.twig")
+     */
+    public function selectPackageType(Request $request) {
+        
+    }
 
 }
 
